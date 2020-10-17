@@ -23,8 +23,11 @@ public class ParkingLot {
 
     ParkingTicket park(Car car) {
         ParkingTicket parkingTicket = new ParkingTicket();
-        parkingSpace.put(parkingTicket, car);
-        return parkingTicket;
+        if (getAvailableCapacity() > 0) {
+            parkingSpace.put(parkingTicket, car);
+            return parkingTicket;
+        }
+        return null;
     }
 
     Car fetch(ParkingTicket parkingTicket) {
