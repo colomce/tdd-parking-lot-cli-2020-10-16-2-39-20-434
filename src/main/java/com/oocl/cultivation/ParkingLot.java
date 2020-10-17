@@ -32,4 +32,8 @@ public class ParkingLot {
     public int getAvailableCapacity() {
         return capacity - parkingSpace.size();
     }
+
+    boolean isTicketValid(ParkingTicket parkingTicket) {
+        return parkingSpace.get(parkingTicket) != null;
+    }
 }

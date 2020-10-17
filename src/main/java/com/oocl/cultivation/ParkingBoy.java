@@ -21,6 +21,6 @@ public class ParkingBoy {
     }
 
     public boolean isTicketValid(ParkingTicket parkingTicket) {
-        return true;
+        return parkingLot.isTicketValid(parkingTicket);
     }
 }
