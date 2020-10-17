@@ -246,6 +246,11 @@ THEN third parking lot should have, 1 capacity, and returns a parking ticket
 insert all test from 1 - 3 ; use Strategy of First Parking boy.
 
 ========== Story 6
+should_return_position_rate_zero_point_5_when_parking_lot_get_position_rate_given_parking_lot_with_2_parked_cars_and_4_capacity
+GIVEN parking lot with 2 parked cars, and 4 capacity
+WHEN parking lot get position rate
+THEN return 0.5
+
 should_return_two_parking_boys_when_manager_get_list_of_parking_boy_given_2_parking_boys_with_parking_lots_1_capacity
 GIVEN
  - Service manager with
@@ -270,3 +275,5 @@ GIVEN
       - 2 Parking Boys, and each one has a full parking lot with 1 capacity.
 WHEN manager delegate fetching of car
  THEN throw InvalidParkingTicket exception with message "Please provide your parking ticket"
+
+

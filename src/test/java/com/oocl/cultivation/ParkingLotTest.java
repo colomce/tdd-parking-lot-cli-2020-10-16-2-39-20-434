@@ -31,4 +31,18 @@ class ParkingLotTest {
         //then
         assertEquals(2, parkingLot.getNumberOfParkedCars());
     }
+    
+    @Test
+    void should_return_position_rate_zero_point_5_when_parking_lot_get_position_rate_given_parking_lot_with_2_parked_cars_and_4_capacity() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(4);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+        //when
+        parkingBoy.park(new Car());
+        parkingBoy.park(new Car());
+
+        //then
+        assertEquals(0.5, parkingLot.getPositionRate());
+    }
 }

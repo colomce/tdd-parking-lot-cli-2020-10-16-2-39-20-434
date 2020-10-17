@@ -52,4 +52,8 @@ public class ParkingLot {
     public int getNumberOfParkedCars() {
         return parkingSpace.size();
     }
+
+    public double getPositionRate() {
+        return 0;
+    }
 }
