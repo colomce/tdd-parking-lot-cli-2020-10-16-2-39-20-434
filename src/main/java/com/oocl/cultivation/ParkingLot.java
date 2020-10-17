@@ -38,7 +38,7 @@ public class ParkingLot {
         if (!isTicketValid(parkingTicket)) {
             throw new InvalidParkingTicketException("Unrecognized parking ticket");
         }
-        Car car = isNull(parkingTicket) ? null : parkingSpace.get(parkingTicket);
+        Car car = parkingSpace.get(parkingTicket);
         parkingSpace.remove(parkingTicket);
         return car;
     }
