@@ -145,7 +145,7 @@ WHEN super smart parking boy parks the car
 THEN throw NotEnoughPosition exception with message "Not enough position"
 
 
-should_throw_InvalidParkingTicket_with_message_Please_provide_your_parking_ticket_when_smart_parking_boy_parked_a_car_given_two_parking_lots
+should_throw_InvalidParkingTicket_with_message_Please_provide_your_parking_ticket_when_smart_parking_boy_parked_a_car_given_two_parking_lots_and_null_parking_ticket
  GIVEN
        - Super Smart Parking boy (Service Manager) with
        - used or wrong ticket and 2 parking lots
