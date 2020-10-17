@@ -17,4 +17,18 @@ class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(5);
         assertEquals(5, parkingLot.getCapacity());
     }
+
+    @Test
+    void should_return_two_when_parking_lot_get_number_of_parked_cars_given_two_parked_cars() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+        //when
+        parkingBoy.park(new Car());
+        parkingBoy.park(new Car());
+
+        //then
+        assertEquals(2, parkingLot.getNumberOfParkedCars());
+    }
 }

@@ -16,6 +16,11 @@ GIVEN parking lot
 WHEN parking boy is created
 THEN parking boy has parking lot
 
+PL - should_return_two_when_parking_lot_get_number_of_parked_cars_given_two_parked_cars
+GIVEN two parked cars
+WHEN parking lot get number of parked cars
+THEN return 2 parked cars.
+
 PB - should_return_parking_ticket_when_parking_boy_park_a_car_given_parking_boy_and_a_car
  GIVEN parking boy a car
  WHEN parking boy parked a car

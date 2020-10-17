@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-
-import static java.util.Objects.isNull;
 
 public class ParkingLot {
     private int capacity;
@@ -50,5 +47,9 @@ public class ParkingLot {
 
     List<ParkingTicket> getParkingTickets() {
         return new ArrayList<>(parkingSpace.keySet());
+    }
+
+    public int getNumberOfParkedCars() {
+        return 0;
     }
 }
