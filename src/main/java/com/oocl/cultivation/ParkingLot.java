@@ -4,9 +4,10 @@ public class ParkingLot {
     private int capacity;
 
     public ParkingLot() {
+        capacity = 10;
     }
 
     public int getCapacity() {
-        return 0;
+        return capacity;
     }
 }
