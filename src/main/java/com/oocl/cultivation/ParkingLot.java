@@ -1,7 +1,10 @@
 package com.oocl.cultivation;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 
@@ -32,12 +35,6 @@ public class ParkingLot {
     }
 
     Car fetch(ParkingTicket parkingTicket) {
-        if(parkingTicket == null) {
-            throw  new InvalidParkingTicketException("Please provide your parking ticket");
-        }
-        if (!isTicketValid(parkingTicket)) {
-            throw new InvalidParkingTicketException("Unrecognized parking ticket");
-        }
         Car car = parkingSpace.get(parkingTicket);
         parkingSpace.remove(parkingTicket);
         return car;
@@ -49,5 +46,9 @@ public class ParkingLot {
 
     boolean isTicketValid(ParkingTicket parkingTicket) {
         return parkingSpace.get(parkingTicket) != null;
+    }
+
+    List<ParkingTicket> getParkingTickets() {
+        return new ArrayList<>(parkingSpace.keySet());
     }
 }

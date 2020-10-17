@@ -28,11 +28,20 @@ public class ParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        return parkingLots.get(0).fetch(parkingTicket);
+        if (parkingTicket == null) {
+            throw new InvalidParkingTicketException("Please provide your parking ticket");
+        }
+        if (!isTicketValid(parkingTicket)) {
+            throw new InvalidParkingTicketException("Unrecognized parking ticket");
+        }
+        return parkingLots.stream()
+                .filter(parkingLot -> parkingLot.isTicketValid(parkingTicket))
+                .map(parkingLot -> parkingLot.fetch(parkingTicket)).findFirst()
+                .orElse(null);
     }
 
     public boolean isTicketValid(ParkingTicket parkingTicket) {
-        return parkingLots.get(0).isTicketValid(parkingTicket);
+        return parkingLots.stream().anyMatch(parkingLot -> parkingLot.isTicketValid(parkingTicket));
     }
 
     public List<ParkingLot> getParkingLots() {
