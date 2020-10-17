@@ -3,6 +3,8 @@ package com.oocl.cultivation;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.util.Objects.isNull;
+
 public class ParkingLot {
     private int capacity;
     private Map<ParkingTicket, Car> parkingSpace = new HashMap<>();
@@ -26,7 +28,7 @@ public class ParkingLot {
     }
 
     Car fetch(ParkingTicket parkingTicket) {
-        Car car = parkingTicket == null ? null : parkingSpace.get(parkingTicket);
+        Car car = isNull(parkingTicket) ? null : parkingSpace.get(parkingTicket);
         parkingSpace.remove(parkingTicket);
         return car;
     }
