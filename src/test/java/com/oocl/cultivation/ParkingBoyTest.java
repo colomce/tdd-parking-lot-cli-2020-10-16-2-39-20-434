@@ -109,4 +109,19 @@ class ParkingBoyTest {
         //then
         assertNull(fetchedCar);
     }
+
+    @Test
+    void should_return_no_car_when_fetched_two_times_given_a_ticket() {
+        //given
+        Car car = new Car();
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+        parkingBoy.fetch(parkingTicket);
+
+        //when
+        Car fetchedCar = parkingBoy.fetch(parkingTicket);
+
+        //then
+        assertNull(fetchedCar);
+    }
 }
