@@ -8,6 +8,7 @@ public class ParkingLot {
     }
 
     public ParkingLot(int capacity) {
+        this.capacity = capacity;
     }
 
     public int getCapacity() {
