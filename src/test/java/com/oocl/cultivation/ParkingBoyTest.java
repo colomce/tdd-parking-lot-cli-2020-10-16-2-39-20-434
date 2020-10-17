@@ -171,4 +171,17 @@ class ParkingBoyTest {
         //then
         assertEquals("Unrecognized parking ticket", invalidParkingTicketException.getMessage());
     }
+
+    @Test
+    void should_throw_InvalidParkingTicket_with_message_Please_provide_your_parking_ticket_when_parking_boy_fetch_a_car_given_wrong_ticket() {
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+
+        //when
+        InvalidParkingTicketException invalidParkingTicketException = assertThrows(InvalidParkingTicketException.class, () -> parkingBoy.fetch(null));
+
+        //then
+        assertEquals("Please provide your parking ticket", invalidParkingTicketException.getMessage());
+    }
+
 }
