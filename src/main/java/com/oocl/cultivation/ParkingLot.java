@@ -18,4 +18,8 @@ public class ParkingLot {
     ParkingTicket park(Car car) {
         return new ParkingTicket();
     }
+
+    public int getAvailableCapacity() {
+        return 0;
+    }
 }

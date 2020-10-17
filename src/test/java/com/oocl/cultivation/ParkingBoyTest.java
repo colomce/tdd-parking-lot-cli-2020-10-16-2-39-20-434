@@ -31,4 +31,18 @@ class ParkingBoyTest {
         //then
         assertNotNull(parkingTicket);
     }
+
+    @Test
+    void should_return_parking_lot_with_remaining_capacity_9_when_parking_boy_parked_a_car_given_parking_lot_with_capacity_10() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(10);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+
+        //when
+        parkingBoy.park(car);
+
+        //then
+        assertEquals(9, parkingLot.getAvailableCapacity());
+    }
 }
