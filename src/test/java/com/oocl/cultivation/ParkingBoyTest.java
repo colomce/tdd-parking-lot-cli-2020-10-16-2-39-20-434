@@ -124,4 +124,19 @@ class ParkingBoyTest {
         //then
         assertNull(fetchedCar);
     }
+
+    @Test
+    void should_return_no_ticket_when_parking_boy_parked_a_car_given_parking_lot_with_1_capacity() {
+        //given
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
+        parkingBoy.park(firstCar);
+
+        //when
+        ParkingTicket parkingTicket = parkingBoy.park(secondCar);
+
+        //then
+        assertNull(parkingTicket);
+    }
 }
