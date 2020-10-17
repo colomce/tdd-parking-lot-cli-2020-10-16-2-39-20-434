@@ -279,4 +279,23 @@ class ParkingBoyTest {
         assertEquals(0, secondParkingLot.getAvailableCapacity());
         assertEquals(0, thirdParkingLot.getAvailableCapacity());
     }
+
+    @Test
+    void  should_throw_NotEnoughPosition_with_message_Not_enough_position_when_parking_boy_parked_a_car_given_parking_boy_with_two_full_parking_lot() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy.park(firstCar);
+        parkingBoy.park(secondCar);
+
+        //when
+        NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> parkingBoy.park(new Car()));
+
+        //then
+        assertEquals("Not enough position", notEnoughPositionException.getMessage());
+    }
 }
