@@ -125,4 +125,24 @@ class SmartParkingBoyTest {
         //then
         assertEquals("Not enough position", notEnoughPositionException.getMessage());
     }
+
+    @Test
+    void should_throw_InvalidParkingTicket_with_message_Please_provide_your_parking_ticket_when_smart_parking_boy_parked_a_car_given_two_parking_lots_and_null_parking_ticket() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        smartParkingBoy.park(firstCar);
+        smartParkingBoy.park(secondCar);
+
+        //when
+        InvalidParkingTicketException invalidParkingTicketException = assertThrows(InvalidParkingTicketException.class, () -> smartParkingBoy.fetch(null));
+
+        //then
+        assertEquals("Please provide your parking ticket", invalidParkingTicketException.getMessage());
+    }
+    
 }
