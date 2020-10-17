@@ -1,11 +1,17 @@
 package com.oocl.cultivation;
 
+import java.util.List;
+
 public class ParkingBoy {
 
     private ParkingLot parkingLot;
 
     public ParkingBoy(ParkingLot parkingLot) {
         this.parkingLot = parkingLot;
+    }
+
+    public ParkingBoy(List<ParkingLot> parkingLots) {
+
     }
 
     public ParkingLot getParkingLot() {
@@ -22,5 +28,9 @@ public class ParkingBoy {
 
     public boolean isTicketValid(ParkingTicket parkingTicket) {
         return parkingLot.isTicketValid(parkingTicket);
+    }
+
+    public List<ParkingLot> getParkingLots() {
+        return null;
     }
 }

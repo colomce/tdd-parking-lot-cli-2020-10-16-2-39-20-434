@@ -2,6 +2,9 @@ package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -202,4 +205,16 @@ class ParkingBoyTest {
         assertEquals("Not enough position", notEnoughPositionException.getMessage());
     }
 
+    @Test
+    void should_return_two_parking_lots_when_parking_boy_get_parking_lots_given_two_parking_lots() {
+        //given
+        List<ParkingLot> parkingLots = Arrays.asList(new ParkingLot(), new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+
+        //when
+        int numberOfParkingLots = parkingBoy.getParkingLots().size();
+
+        //then
+        assertEquals(2, numberOfParkingLots);
+    }
 }
