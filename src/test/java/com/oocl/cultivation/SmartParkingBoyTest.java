@@ -43,4 +43,27 @@ class SmartParkingBoyTest {
         //then
         assertEquals(2, firstParkingLot.getParkingTickets().size());
     }
+
+    @Test
+    void should_second_parking_have_one_parked_car_when_smart_parking_boy_parks_a_car_given_two_parking_lot_where_first_parking_lot_has_more_parked_car() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(5);
+        ParkingLot secondParkingLot = new ParkingLot(5);
+        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        Car thirdCar = new Car();
+        Car fourthCar = new Car();
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        smartParkingBoy.park(firstCar);
+        smartParkingBoy.park(secondCar);
+        smartParkingBoy.park(thirdCar);
+
+        //when
+        smartParkingBoy.park(fourthCar);
+
+        //then
+        assertEquals(2, firstParkingLot.getParkingTickets().size());
+        assertEquals(2, secondParkingLot.getParkingTickets().size());
+    }
 }
