@@ -7,6 +7,9 @@ public class ParkingLot {
         capacity = 10;
     }
 
+    public ParkingLot(int capacity) {
+    }
+
     public int getCapacity() {
         return capacity;
     }
