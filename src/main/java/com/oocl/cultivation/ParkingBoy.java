@@ -6,14 +6,18 @@ import static java.util.Arrays.asList;
 
 public class ParkingBoy {
 
+    private FetchingBehavior fetchingBehavior;
     private List<ParkingLot> parkingLots;
 
     public ParkingBoy(ParkingLot parkingLot) {
         this.parkingLots = asList(parkingLot);
+        fetchingBehavior = new FetchingBehavior(this.parkingLots);
+
     }
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
+        fetchingBehavior = new FetchingBehavior(this.parkingLots);
     }
 
     public ParkingTicket park(Car car) {
@@ -28,20 +32,7 @@ public class ParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        if (parkingTicket == null) {
-            throw new InvalidParkingTicketException("Please provide your parking ticket");
-        }
-        if (!isTicketValid(parkingTicket)) {
-            throw new InvalidParkingTicketException("Unrecognized parking ticket");
-        }
-        return parkingLots.stream()
-                .filter(parkingLot -> parkingLot.isTicketValid(parkingTicket))
-                .map(parkingLot -> parkingLot.fetch(parkingTicket)).findFirst()
-                .orElse(null);
-    }
-
-    public boolean isTicketValid(ParkingTicket parkingTicket) {
-        return parkingLots.stream().anyMatch(parkingLot -> parkingLot.isTicketValid(parkingTicket));
+        return this.fetchingBehavior.fetch(parkingTicket);
     }
 
     public List<ParkingLot> getParkingLots() {
