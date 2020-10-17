@@ -298,4 +298,23 @@ class ParkingBoyTest {
         //then
         assertEquals("Not enough position", notEnoughPositionException.getMessage());
     }
+
+    @Test
+    void  should_throw_InvalidParkingTicket_with_message_Please_provide_your_parking_ticket_when_parking_boy_parked_a_car_given_two_parking_lots() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy.park(firstCar);
+        parkingBoy.park(secondCar);
+
+        //when
+        InvalidParkingTicketException invalidParkingTicketException = assertThrows(InvalidParkingTicketException.class, () -> parkingBoy.fetch(null));
+
+        //then
+        assertEquals("Please provide your parking ticket", invalidParkingTicketException.getMessage());
+    }
 }
