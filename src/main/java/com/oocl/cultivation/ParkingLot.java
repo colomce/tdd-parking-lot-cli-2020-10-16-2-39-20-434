@@ -20,8 +20,13 @@ public class ParkingLot {
     }
 
     ParkingTicket park(Car car) {
-        parkingSpace.put(new ParkingTicket(), null);
-        return new ParkingTicket();
+        ParkingTicket parkingTicket = new ParkingTicket();
+        parkingSpace.put(parkingTicket, car);
+        return parkingTicket;
+    }
+
+    public Car fetch(ParkingTicket parkingTicket) {
+        return parkingSpace.get(parkingTicket);
     }
 
     public int getAvailableCapacity() {
