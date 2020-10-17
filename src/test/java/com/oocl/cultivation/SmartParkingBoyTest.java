@@ -6,8 +6,25 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class SmartParkingBoyTest {
+
+    @Test
+    void should_return_parking_ticket_when_smart_parking_boy_parks_a_car_given_parking_lot_with_1_capacity() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        List<ParkingLot> parkingLots = asList(parkingLot);
+        Car car = new Car();
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+
+        //when
+        ParkingTicket parkingTicket = smartParkingBoy.park(car);
+
+        //then
+        assertNotNull(parkingTicket);
+    }
+
     @Test
     void should_first_parking_lot_have_one_parked_car_when_smart_parking_boy_park_a_car_given_two_parking_lots_with_no_parked_cars() {
         //given
