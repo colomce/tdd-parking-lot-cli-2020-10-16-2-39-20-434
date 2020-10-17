@@ -15,7 +15,7 @@ public class ParkingLot {
         return capacity;
     }
 
-    public ParkingTicket park(Car car) {
+    ParkingTicket park(Car car) {
         return new ParkingTicket();
     }
 }
