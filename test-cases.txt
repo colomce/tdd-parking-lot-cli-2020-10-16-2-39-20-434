@@ -130,12 +130,12 @@ GIVEN
 WHEN super smart parking boy parks the car
 THEN first parking lot should have, 1 parked car, and returns a parking ticket
 
-should_return_two_right_car_when_smart_parking_boy_parks_given_two_parking_lot_with_5_capacity
+should_return_two_right_car_when_smart_parking_boy_fetch_given_two_parking_lot_with_5_capacity
 GIVEN
-- Smart Parking boy (Service Manager) with
-     - a parking lot with 1 capacity
+ - first parking lot should have, 1 parked car, and returns a parking ticket
+ - second parking lot should have, 1 parked car, and returns a parking ticket
 WHEN super smart parking boy parks the car
-THEN first parking lot should have, 1 parked car, and returns a parking ticket
+THEN fetched car 1 and car 2 should not be null
 
 should_throw_NotEnoughPosition_with_message_Not_enough_position_when_smart_parking_boy_parked_a_car_given_parking_boy_with_two_full_parking_lot
 GIVEN
