@@ -14,4 +14,8 @@ public class ParkingLot {
     public int getCapacity() {
         return capacity;
     }
+
+    public ParkingTicket park(Car car) {
+        return new ParkingTicket();
+    }
 }
