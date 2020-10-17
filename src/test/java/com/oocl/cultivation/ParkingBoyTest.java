@@ -281,7 +281,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void  should_throw_NotEnoughPosition_with_message_Not_enough_position_when_parking_boy_parked_a_car_given_parking_boy_with_two_full_parking_lot() {
+    void should_throw_NotEnoughPosition_with_message_Not_enough_position_when_parking_boy_parked_a_car_given_parking_boy_with_two_full_parking_lot() {
         //given
         ParkingLot firstParkingLot = new ParkingLot(1);
         ParkingLot secondParkingLot = new ParkingLot(1);
@@ -300,7 +300,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void  should_throw_InvalidParkingTicket_with_message_Please_provide_your_parking_ticket_when_parking_boy_parked_a_car_given_two_parking_lots() {
+    void should_throw_InvalidParkingTicket_with_message_Please_provide_your_parking_ticket_when_parking_boy_parked_a_car_given_two_parking_lots() {
         //given
         ParkingLot firstParkingLot = new ParkingLot(1);
         ParkingLot secondParkingLot = new ParkingLot(1);
@@ -316,5 +316,26 @@ class ParkingBoyTest {
 
         //then
         assertEquals("Please provide your parking ticket", invalidParkingTicketException.getMessage());
+    }
+
+    @Test
+    void should_fetch_two_right_cars_when_parking_boy_fetch_given_two_parked_cars_and_parking_tickets() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        ParkingTicket firstCarParkingTicket = parkingBoy.park(firstCar);
+        ParkingTicket secondCarParkingTicket = parkingBoy.park(secondCar);
+
+        //when
+        Car fetchedFirstCar = parkingBoy.fetch(firstCarParkingTicket);
+        Car fetchedSecondCar = parkingBoy.fetch(secondCarParkingTicket);
+
+        //then
+        assertSame(firstCar, fetchedFirstCar);
+        assertSame(secondCar, fetchedSecondCar);
     }
 }
