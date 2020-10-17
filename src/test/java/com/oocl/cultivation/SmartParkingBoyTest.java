@@ -61,7 +61,7 @@ class SmartParkingBoyTest {
         smartParkingBoy.park(car);
 
         //then
-        assertEquals(1, firstParkingLot.getParkingTickets().size());
+        assertEquals(1, firstParkingLot.getNumberOfParkedCars());
     }
 
     @Test
@@ -81,7 +81,7 @@ class SmartParkingBoyTest {
         smartParkingBoy.park(thirdCar);
 
         //then
-        assertEquals(2, firstParkingLot.getParkingTickets().size());
+        assertEquals(2, firstParkingLot.getNumberOfParkedCars());
     }
 
     @Test
@@ -103,8 +103,8 @@ class SmartParkingBoyTest {
         smartParkingBoy.park(fourthCar);
 
         //then
-        assertEquals(2, firstParkingLot.getParkingTickets().size());
-        assertEquals(2, secondParkingLot.getParkingTickets().size());
+        assertEquals(2, firstParkingLot.getNumberOfParkedCars());
+        assertEquals(2, secondParkingLot.getNumberOfParkedCars());
     }
 
     @Test
