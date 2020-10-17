@@ -83,6 +83,13 @@ PB - should_return_two_parking_lots_when_parking_boy_get_parking_lots_given_two_
  WHEN parking boy get parking lot
  THEN return 2 parking lots.
 
+PB - should_first_parking_lot_return_parking_ticket_when_parking_boy_parked_two_cars_given_two_parking_lot_where_first_parking_lot_capacity_is_two
+ GIVEN a car and a parking boy with 2 parking lot where
+ - first parking lot (2 capacity)
+ - second parking lot (1 capacity),
+ WHEN parking boy park a car
+ THEN first parking lot return a ticket, capacity of first parking lot is 2, second parking lot is 0.
+
 PB - should_second_parking_lot_return_parking_ticket_when_parking_boy_parked_a_car_given_two_parking_lot_where_first_parking_lot_is_full
  GIVEN a car and a parking boy with 2 parking lot where
  - first parking lot is full (1 capacity)
