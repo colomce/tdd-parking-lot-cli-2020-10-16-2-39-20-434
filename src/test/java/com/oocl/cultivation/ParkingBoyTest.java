@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -95,16 +94,13 @@ class ParkingBoyTest {
 
         //when
         Car fetchedCar = null;
-        boolean isValidTicket = true;
         try {
-            isValidTicket = parkingBoy.isTicketValid(wrongTicket);
             fetchedCar = parkingBoy.fetch(wrongTicket);
         } catch (InvalidParkingTicketException ignored) {
 
         }
 
         //then
-        assertFalse(isValidTicket);
         assertNull(fetchedCar);
     }
 
