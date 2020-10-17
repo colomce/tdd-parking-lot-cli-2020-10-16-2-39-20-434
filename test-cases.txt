@@ -116,6 +116,11 @@ PB - should_throw_InvalidParkingTicket_with_message_Please_provide_your_parking_
  THEN throw InvalidParkingTicket exception
  WITH message "Please provide your parking ticket"
 
+should_fetch_two_right_cars_when_parking_boy_fetch_given_two_parked_cars_and_parking_tickets
+GIVEN - 2 parked cars
+WHEN a parking boy fetch both cars
+THEN return 2 correct cars based on Parking tickets.
+
 ========= Story 4
 should_return_parking_ticket_when_smart_parking_boy_parks_a_car_given_parking_lot_with_1_capacity
 GIVEN
