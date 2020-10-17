@@ -18,4 +18,17 @@ class ParkingBoyTest {
         assertNotNull(parkingLot);
         assertEquals(ParkingLot.class, parkingLot.getClass());
     }
+
+    @Test
+    void should_return_parking_ticket_when_parking_boy_park_a_car_given_parking_boy_and_a_car() {
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        Car car = new Car();
+
+        //when
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+
+        //then
+        assertNotNull(parkingTicket);
+    }
 }

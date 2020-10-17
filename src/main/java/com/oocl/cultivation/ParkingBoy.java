@@ -11,4 +11,8 @@ public class ParkingBoy {
     public ParkingLot getParkingLot() {
         return parkingLot;
     }
+
+    public ParkingTicket park(Car car) {
+        return null;
+    }
 }
