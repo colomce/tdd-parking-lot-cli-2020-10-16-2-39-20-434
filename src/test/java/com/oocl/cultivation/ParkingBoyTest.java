@@ -255,4 +255,28 @@ class ParkingBoyTest {
         assertNotNull(secondParkingTicket);
         assertEquals(0, firstParkingLot.getAvailableCapacity());
     }
+
+    @Test
+    void should_third_parking_lot_return_parking_ticket_when_parking_boy_parked_a_car_given_first_and_second_is_full_and_third_parking_lot_is_not() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        ParkingLot thirdParkingLot = new ParkingLot(1);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        Car thirdCar = new Car();
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot, thirdParkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy.park(firstCar);
+        parkingBoy.park(secondCar);
+        //when
+
+        ParkingTicket parkingTicket = parkingBoy.park(thirdCar);
+
+        //then
+        assertNotNull(parkingTicket);
+        assertEquals(0, firstParkingLot.getAvailableCapacity());
+        assertEquals(0, secondParkingLot.getAvailableCapacity());
+        assertEquals(0, thirdParkingLot.getAvailableCapacity());
+    }
 }
