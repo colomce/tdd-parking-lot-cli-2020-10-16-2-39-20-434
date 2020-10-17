@@ -1,14 +1,15 @@
 package com.oocl.cultivation;
 
-import java.util.Arrays;
 import java.util.List;
+
+import static java.util.Arrays.asList;
 
 public class ParkingBoy {
 
     private List<ParkingLot> parkingLots;
 
     public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLots = Arrays.asList(parkingLot);
+        this.parkingLots = asList(parkingLot);
     }
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
@@ -16,9 +17,9 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        if(!parkingLots.isEmpty()) {
+        if (!parkingLots.isEmpty()) {
             for (ParkingLot parkingLot : parkingLots) {
-                if(parkingLot.getAvailableCapacity() > 0) {
+                if (parkingLot.getAvailableCapacity() > 0) {
                     return parkingLot.park(car);
                 }
             }
