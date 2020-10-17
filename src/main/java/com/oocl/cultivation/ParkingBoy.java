@@ -19,4 +19,8 @@ public class ParkingBoy {
     public Car fetch(ParkingTicket parkingTicket) {
         return parkingLot.fetch(parkingTicket);
     }
+
+    public boolean isTicketValid(ParkingTicket parkingTicket) {
+        return true;
+    }
 }
