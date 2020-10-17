@@ -7,7 +7,7 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SmartParkingBoyTest {
+class SmartParkingBoyTest {
     @Test
     void should_first_parking_lot_have_one_parked_car_when_smart_parking_boy_park_a_car_given_two_parking_lots_with_no_parked_cars() {
         //given
@@ -18,7 +18,7 @@ public class SmartParkingBoyTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
 
         //when
-        ParkingTicket parkingTicket = smartParkingBoy.park(car);
+        smartParkingBoy.park(car);
 
         //then
         assertEquals(1, firstParkingLot.getParkingTickets().size());
