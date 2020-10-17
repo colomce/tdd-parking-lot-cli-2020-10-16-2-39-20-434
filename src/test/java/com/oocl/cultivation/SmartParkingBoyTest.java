@@ -8,6 +8,7 @@ import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SmartParkingBoyTest {
 
@@ -104,5 +105,24 @@ class SmartParkingBoyTest {
         //then
         assertEquals(2, firstParkingLot.getParkingTickets().size());
         assertEquals(2, secondParkingLot.getParkingTickets().size());
+    }
+
+    @Test
+    void should_throw_NotEnoughPosition_with_message_Not_enough_position_when_smart_parking_boy_parked_a_car_given_parking_boy_with_two_full_parking_lot() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        smartParkingBoy.park(firstCar);
+        smartParkingBoy.park(secondCar);
+
+        //when
+        NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> smartParkingBoy.park(new Car()));
+
+        //then
+        assertEquals("Not enough position", notEnoughPositionException.getMessage());
     }
 }
