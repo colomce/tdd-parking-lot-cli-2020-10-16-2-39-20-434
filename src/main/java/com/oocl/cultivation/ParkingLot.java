@@ -1,7 +1,11 @@
 package com.oocl.cultivation;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ParkingLot {
     private int capacity;
+    private Map<ParkingTicket, Car> parkingSpace = new HashMap<>();
 
     public ParkingLot() {
         capacity = 10;
@@ -16,10 +20,11 @@ public class ParkingLot {
     }
 
     ParkingTicket park(Car car) {
+        parkingSpace.put(new ParkingTicket(), null);
         return new ParkingTicket();
     }
 
     public int getAvailableCapacity() {
-        return 0;
+        return capacity - parkingSpace.size();
     }
 }
