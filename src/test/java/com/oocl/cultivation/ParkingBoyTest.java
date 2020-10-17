@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ParkingBoyTest {
     @Test
@@ -138,5 +139,18 @@ class ParkingBoyTest {
 
         //then
         assertNull(parkingTicket);
+    }
+
+    @Test
+    void should_throw_InvalidParkingTicket_with_message_Unrecognized_parking_ticket_when_parking_boy_parks_a_car_given_wrong_ticket() {
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingTicket parkingTicket = new ParkingTicket();
+
+        //when
+        InvalidParkingTicket invalidParkingTicket = assertThrows(InvalidParkingTicket.class, () -> parkingBoy.fetch(parkingTicket));
+
+        //then
+        assertEquals( "Unrecognized parking ticket", invalidParkingTicket.getMessage());
     }
 }
