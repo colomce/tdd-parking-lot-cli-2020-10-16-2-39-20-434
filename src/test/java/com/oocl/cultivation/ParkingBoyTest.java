@@ -153,7 +153,12 @@ class ParkingBoyTest {
         parkingBoy.park(firstCar);
 
         //when
-        ParkingTicket parkingTicket = parkingBoy.park(secondCar);
+        ParkingTicket parkingTicket = null;
+        try {
+            parkingBoy.park(secondCar);
+        } catch (NotEnoughPositionException ignored) {
+
+        }
 
         //then
         assertNull(parkingTicket);

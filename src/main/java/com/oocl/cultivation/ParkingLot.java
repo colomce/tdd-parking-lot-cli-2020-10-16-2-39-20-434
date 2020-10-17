@@ -26,11 +26,15 @@ public class ParkingLot {
         if (getAvailableCapacity() > 0) {
             parkingSpace.put(parkingTicket, car);
             return parkingTicket;
+        } else {
+            throw new NotEnoughPositionException("Not enough position");
         }
-        return null;
     }
 
     Car fetch(ParkingTicket parkingTicket) {
+        if(parkingTicket == null) {
+            throw  new InvalidParkingTicketException("Please provide your parking ticket");
+        }
         if (!isTicketValid(parkingTicket)) {
             throw new InvalidParkingTicketException("Unrecognized parking ticket");
         }
