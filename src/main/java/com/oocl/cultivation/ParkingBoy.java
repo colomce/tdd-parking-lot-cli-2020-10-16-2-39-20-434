@@ -5,13 +5,14 @@ import java.util.List;
 public class ParkingBoy {
 
     private ParkingLot parkingLot;
+    private List<ParkingLot> parkingLots;
 
     public ParkingBoy(ParkingLot parkingLot) {
         this.parkingLot = parkingLot;
     }
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
-
+        this.parkingLots = parkingLots;
     }
 
     public ParkingLot getParkingLot() {
@@ -31,6 +32,6 @@ public class ParkingBoy {
     }
 
     public List<ParkingLot> getParkingLots() {
-        return null;
+        return parkingLots;
     }
 }
