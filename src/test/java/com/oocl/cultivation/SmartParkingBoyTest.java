@@ -7,6 +7,7 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 class SmartParkingBoyTest {
 
@@ -23,6 +24,27 @@ class SmartParkingBoyTest {
 
         //then
         assertNotNull(parkingTicket);
+    }
+
+    @Test
+    void should_return_two_right_car_when_smart_parking_boy_fetch_given_two_parking_lot_with_5_capacity() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(5);
+        ParkingLot secondParkingLot = new ParkingLot(5);
+        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        ParkingTicket firstParkingTicket = smartParkingBoy.park(firstCar);
+        ParkingTicket secondParkingTicket = smartParkingBoy.park(secondCar);
+
+        //when
+        Car fetchedFirstCar = smartParkingBoy.fetch(firstParkingTicket);
+        Car fetchedSecondCar = smartParkingBoy.fetch(secondParkingTicket);
+
+        //then
+        assertSame(firstCar, fetchedFirstCar);
+        assertSame(secondCar, fetchedSecondCar);
     }
 
     @Test

@@ -16,4 +16,8 @@ public class SmartParkingBoy {
     public ParkingTicket park(Car car) {
         return smartParkingBehavior.park(car);
     }
+
+    public Car fetch(ParkingTicket firstParkingTicket) {
+        return null;
+    }
 }
