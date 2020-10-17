@@ -32,7 +32,7 @@ public class ParkingLot {
 
     Car fetch(ParkingTicket parkingTicket) {
         if (!isTicketValid(parkingTicket)) {
-            throw new InvalidParkingTicket("Unrecognized parking ticket");
+            throw new InvalidParkingTicketException("Unrecognized parking ticket");
         }
         Car car = isNull(parkingTicket) ? null : parkingSpace.get(parkingTicket);
         parkingSpace.remove(parkingTicket);

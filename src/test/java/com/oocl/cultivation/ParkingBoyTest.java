@@ -96,7 +96,7 @@ class ParkingBoyTest {
         try {
             isValidTicket = parkingBoy.isTicketValid(wrongTicket);
             fetchedCar = parkingBoy.fetch(wrongTicket);
-        } catch (InvalidParkingTicket ignored) {
+        } catch (InvalidParkingTicketException ignored) {
 
         }
 
@@ -115,7 +115,7 @@ class ParkingBoyTest {
 
         try {
             fetchedCar = parkingBoy.fetch(null);
-        } catch (InvalidParkingTicket ignored) {
+        } catch (InvalidParkingTicketException ignored) {
 
         }
 
@@ -136,7 +136,7 @@ class ParkingBoyTest {
 
         try {
             fetchedCar = parkingBoy.fetch(parkingTicket);
-        } catch (InvalidParkingTicket ignored) {
+        } catch (InvalidParkingTicketException ignored) {
 
         }
 
@@ -166,9 +166,9 @@ class ParkingBoyTest {
         ParkingTicket parkingTicket = new ParkingTicket();
 
         //when
-        InvalidParkingTicket invalidParkingTicket = assertThrows(InvalidParkingTicket.class, () -> parkingBoy.fetch(parkingTicket));
+        InvalidParkingTicketException invalidParkingTicketException = assertThrows(InvalidParkingTicketException.class, () -> parkingBoy.fetch(parkingTicket));
 
         //then
-        assertEquals("Unrecognized parking ticket", invalidParkingTicket.getMessage());
+        assertEquals("Unrecognized parking ticket", invalidParkingTicketException.getMessage());
     }
 }
