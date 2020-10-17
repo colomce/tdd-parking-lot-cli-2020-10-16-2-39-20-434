@@ -19,7 +19,7 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
 
         //when
-        ParkingLot parkingLot = parkingBoy.getParkingLot();
+        ParkingLot parkingLot = parkingBoy.getParkingLots().get(0);
 
         //then
         assertNotNull(parkingLot);
