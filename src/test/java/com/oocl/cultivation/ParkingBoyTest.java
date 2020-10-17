@@ -217,4 +217,23 @@ class ParkingBoyTest {
         //then
         assertEquals(2, numberOfParkingLots);
     }
+
+    @Test
+    void should_second_parking_lot_return_parking_ticket_when_parking_boy_parked_a_car_given_two_parking_lot_where_first_parking_lot_is_full() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy.park(firstCar);
+
+        //when
+        ParkingTicket secondParkingTicket = parkingBoy.park(secondCar);
+
+        //then
+        assertNotNull(secondParkingTicket);
+        assertEquals(0, secondParkingLot.getAvailableCapacity());
+    }
 }

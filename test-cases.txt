@@ -88,7 +88,7 @@ PB - should_second_parking_lot_return_parking_ticket_when_parking_boy_parked_a_c
  - first parking lot is full (1 capacity)
  - second parking lot (1 capacity) is not,
  WHEN parking boy park a car
- THEN parking lot 2 return a ticket.
+ THEN parking lot 2 return a ticket and available space is 0.
 
 PB - should_third_parking_lot_return_parking_ticket_when_parking_boy_parked_a_car_given_first_and_second_is_full_and_third_parking_lot_is_not
  GIVEN a car and a parking boy with 3 parking lot where
