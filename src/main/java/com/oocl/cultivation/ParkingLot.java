@@ -26,7 +26,9 @@ public class ParkingLot {
     }
 
     Car fetch(ParkingTicket parkingTicket) {
-        return parkingTicket == null ? null : parkingSpace.get(parkingTicket);
+        Car car = parkingTicket == null ? null : parkingSpace.get(parkingTicket);
+        parkingSpace.remove(parkingTicket);
+        return car;
     }
 
     public int getAvailableCapacity() {
