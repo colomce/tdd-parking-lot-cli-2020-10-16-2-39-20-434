@@ -5,16 +5,14 @@ import com.oocl.cultivation.behaviors.NormalParkingBehavior;
 
 import java.util.List;
 
-import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 
 public class ParkingBoy extends ParkingLotEmployee {
-
     private FetchingBehavior fetchingBehavior;
     private NormalParkingBehavior normalParkingBehavior;
-    private List<ParkingLot> parkingLots;
 
     public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLots = asList(parkingLot);
+        this.parkingLots = singletonList(parkingLot);
         fetchingBehavior = new FetchingBehavior(this.parkingLots);
         normalParkingBehavior = new NormalParkingBehavior(this.parkingLots);
     }
@@ -31,9 +29,5 @@ public class ParkingBoy extends ParkingLotEmployee {
 
     public Car fetch(ParkingTicket parkingTicket) {
         return this.fetchingBehavior.fetch(parkingTicket);
-    }
-
-    public List<ParkingLot> getParkingLots() {
-        return parkingLots;
     }
 }
