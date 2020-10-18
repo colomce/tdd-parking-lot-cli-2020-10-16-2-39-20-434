@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.exceptions.NotEnoughPositionException;
 import com.oocl.cultivation.models.Car;
 import com.oocl.cultivation.models.ParkingLot;
 import com.oocl.cultivation.models.ParkingTicket;
@@ -12,6 +13,7 @@ import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SuperSmartParkingBoyTest {
     @Test
@@ -114,6 +116,25 @@ public class SuperSmartParkingBoyTest {
         assertEquals(15, firstParkingLot.getNumberOfParkedCars());
         assertEquals(11, secondParkingLot.getNumberOfParkedCars());
         assertEquals(2, thirdParkingLot.getNumberOfParkedCars());
+    }
+
+    @Test
+    void should_throw_NotEnoughPosition_with_message_Not_enough_position_when_super_smart_parking_boy_parked_a_car_given_parking_boy_with_two_full_parking_lot() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
+        superSmartParkingBoy.park(firstCar);
+        superSmartParkingBoy.park(secondCar);
+
+        //when
+        NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> superSmartParkingBoy.park(new Car()));
+
+        //then
+        assertEquals("Not enough position", notEnoughPositionException.getMessage());
     }
 
     void parkMultipleTimes(SuperSmartParkingBoy superSmartParkingBoy, int noOfCars) {
