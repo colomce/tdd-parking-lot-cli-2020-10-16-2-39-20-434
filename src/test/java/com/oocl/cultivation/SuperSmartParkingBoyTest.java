@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.exceptions.InvalidParkingTicketException;
 import com.oocl.cultivation.exceptions.NotEnoughPositionException;
 import com.oocl.cultivation.models.Car;
 import com.oocl.cultivation.models.ParkingLot;
@@ -135,6 +136,24 @@ public class SuperSmartParkingBoyTest {
 
         //then
         assertEquals("Not enough position", notEnoughPositionException.getMessage());
+    }
+
+    @Test
+    void should_throw_InvalidParkingTicket_with_message_Please_provide_your_parking_ticket_when_super_smart_parking_boy_parked_a_car_given_two_parking_lots() {
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
+        superSmartParkingBoy.park(firstCar);
+        superSmartParkingBoy.park(secondCar);
+
+        //when
+        InvalidParkingTicketException invalidParkingTicketException = assertThrows(InvalidParkingTicketException.class, () -> superSmartParkingBoy.fetch(null));
+
+        //then
+        assertEquals("Please provide your parking ticket", invalidParkingTicketException.getMessage());
     }
 
     void parkMultipleTimes(SuperSmartParkingBoy superSmartParkingBoy, int noOfCars) {
