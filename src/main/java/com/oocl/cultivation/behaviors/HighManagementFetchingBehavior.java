@@ -8,6 +8,8 @@ import com.oocl.cultivation.models.ParkingTicket;
 import java.util.List;
 import java.util.Optional;
 
+import static com.oocl.cultivation.constants.Constants.UNRECOGNIZED_PARKING_TICKET_MSG;
+
 public class HighManagementFetchingBehavior implements IFetchingBehavior {
     private List<ParkingLotEmployee> managementList;
 
@@ -27,6 +29,6 @@ public class HighManagementFetchingBehavior implements IFetchingBehavior {
 
         return parkingLotEmployee
                 .map(lotEmployee -> lotEmployee.fetch(parkingTicket))
-                .orElseThrow(() -> new InvalidParkingTicketException("Unrecognized parking ticket"));
+                .orElseThrow(() -> new InvalidParkingTicketException(UNRECOGNIZED_PARKING_TICKET_MSG));
     }
 }

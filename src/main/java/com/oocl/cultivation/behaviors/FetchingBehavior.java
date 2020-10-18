@@ -1,11 +1,14 @@
 package com.oocl.cultivation.behaviors;
 
+import com.oocl.cultivation.constants.Constants;
 import com.oocl.cultivation.models.Car;
 import com.oocl.cultivation.exceptions.InvalidParkingTicketException;
 import com.oocl.cultivation.models.ParkingLot;
 import com.oocl.cultivation.models.ParkingTicket;
 
 import java.util.List;
+
+import static com.oocl.cultivation.constants.Constants.UNRECOGNIZED_PARKING_TICKET_MSG;
 
 public class FetchingBehavior implements IFetchingBehavior {
 
@@ -21,7 +24,7 @@ public class FetchingBehavior implements IFetchingBehavior {
             throw new InvalidParkingTicketException("Please provide your parking ticket");
         }
         if (!isTicketValid(parkingTicket)) {
-            throw new InvalidParkingTicketException("Unrecognized parking ticket");
+            throw new InvalidParkingTicketException(UNRECOGNIZED_PARKING_TICKET_MSG);
         }
         return parkingLots.stream()
                 .filter(parkingLot -> parkingLot.isTicketValid(parkingTicket))
