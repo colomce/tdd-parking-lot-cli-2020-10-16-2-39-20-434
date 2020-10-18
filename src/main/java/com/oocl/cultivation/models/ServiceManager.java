@@ -24,6 +24,10 @@ public class ServiceManager extends ParkingLotEmployee {
         normalParkingBehavior = new NormalParkingBehavior(this.parkingLots);
     }
 
+    public ServiceManager(ParkingLotEmployee ...managementList) {
+
+    }
+
     @Override
     public ParkingTicket park(Car car) {
         return normalParkingBehavior.park(car);
@@ -32,5 +36,9 @@ public class ServiceManager extends ParkingLotEmployee {
     @Override
     public Car fetch(ParkingTicket parkingTicket) {
         return fetchingBehavior.fetch(parkingTicket);
+    }
+
+    public List<ParkingLotEmployee> getManagementList() {
+        return null;
     }
 }

@@ -16,6 +16,10 @@ public class SmartParkingBoy extends ParkingLotEmployee {
         fetchingBehavior = new FetchingBehavior(parkingLots);
     }
 
+    public SmartParkingBoy(ParkingLot secondParkingLot) {
+
+    }
+
     public ParkingTicket park(Car car) {
         return smartParkingBehavior.park(car);
     }

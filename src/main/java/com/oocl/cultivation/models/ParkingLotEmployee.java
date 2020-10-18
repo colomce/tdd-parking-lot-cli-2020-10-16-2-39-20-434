@@ -1,6 +1,6 @@
 package com.oocl.cultivation.models;
 
-abstract class ParkingLotEmployee {
+public abstract class ParkingLotEmployee {
     abstract ParkingTicket park(Car car);
     abstract Car fetch(ParkingTicket parkingTicket);
 }

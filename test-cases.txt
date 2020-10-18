@@ -266,12 +266,12 @@ should_fetch_two_right_cars_when_manager_parking_boy_fetch_given_two_parked_cars
  WHEN a manager parking boy fetch both cars
  THEN return 2 correct cars based on Parking tickets.
 
-should_return_two_parking_boys_when_manager_get_list_of_parking_boy_given_2_parking_boys_with_parking_lots_1_capacity
+should_return_three_parking_boys_when_manager_get_list_of_parking_boy_given_3_different_parking_boys_with_parking_lots_1_capacity
 GIVEN
  - Service manager with
-      - 2 Parking Boys, and each one has a parking lot with 1 capacity.
+      - 3 Parking Boys, and each one has a parking lot with 1 capacity.
 WHEN manager get list of parking boys
-THEN parking boys list has size of 2
+THEN parking boys list has size of 3
 
 should_throw_NotEnoughPosition_with_message_Not_enough_position_when_service_manager_delegate_parking_boy_to_parked_a_car_given_parking_boy_with_two_full_parking_lot
 GIVEN

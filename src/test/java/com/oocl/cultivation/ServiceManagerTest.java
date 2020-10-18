@@ -1,14 +1,19 @@
 package com.oocl.cultivation;
 
 import com.oocl.cultivation.models.Car;
+import com.oocl.cultivation.models.ParkingBoy;
 import com.oocl.cultivation.models.ParkingLot;
 import com.oocl.cultivation.models.ParkingTicket;
 import com.oocl.cultivation.models.ServiceManager;
+import com.oocl.cultivation.models.SmartParkingBoy;
+import com.oocl.cultivation.models.SuperSmartParkingBoy;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 public class ServiceManagerTest {
@@ -49,6 +54,25 @@ public class ServiceManagerTest {
         //then
         assertSame(firstCar, fetchedFirstCar);
         assertSame(secondCar, fetchedSecondCar);
+    }
+
+    @Test
+    void should_return_three_parking_boys_when_manager_get_list_of_parking_boy_given_3_different_parking_boys_with_parking_lots_1_capacity() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        ParkingLot thirdParkingLot = new ParkingLot(1);
+
+        ParkingBoy parkingBoy = new ParkingBoy(firstParkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
+
+        ServiceManager serviceManager = new ServiceManager(parkingBoy, smartParkingBoy, superSmartParkingBoy);
+        //when
+
+        //then
+        assertNotNull(serviceManager.getManagementList());
+        assertEquals(3, serviceManager.getManagementList().size());
     }
 
 }
