@@ -256,10 +256,10 @@ THEN
 insert all test from 1 - 3 ; use Strategy of First Parking boy.
 
 ========== Story 6
-should_return_position_rate_zero_point_5_when_parking_lot_get_position_rate_given_parking_lot_with_2_parked_cars_and_4_capacity
-GIVEN parking lot with 2 parked cars, and 4 capacity
-WHEN parking lot get position rate is equal
-THEN return 0.5
+should_return_cars_when_manager_parking_boy_fetch_given_two_tickets_from_two_parked_cars
+ GIVEN parking boy parked two cars and parked them
+ WHEN fetch the two cars with corresponding tickets
+ THEN two cars are fetched
 
 should_return_two_parking_boys_when_manager_get_list_of_parking_boy_given_2_parking_boys_with_parking_lots_1_capacity
 GIVEN
@@ -267,8 +267,6 @@ GIVEN
       - 2 Parking Boys, and each one has a parking lot with 1 capacity.
 WHEN manager get list of parking boys
 THEN parking boys list has size of 2
-
-insert all test from 1 - 3 ; use Strategy of First Parking boy.
 
 should_throw_NotEnoughPosition_with_message_Not_enough_position_when_service_manager_delegate_parking_boy_to_parked_a_car_given_parking_boy_with_two_full_parking_lot
 GIVEN
