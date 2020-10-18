@@ -9,6 +9,7 @@ import java.util.List;
 
 import static com.oocl.cultivation.constants.Constants.PROVIDE_YOUR_TICKET_MSG;
 import static com.oocl.cultivation.constants.Constants.UNRECOGNIZED_PARKING_TICKET_MSG;
+import static java.util.Objects.isNull;
 
 public class FetchingBehavior implements IFetchingBehavior {
 
@@ -20,7 +21,7 @@ public class FetchingBehavior implements IFetchingBehavior {
 
     @Override
     public Car fetch(ParkingTicket parkingTicket) {
-        if (parkingTicket == null) {
+        if (isNull(parkingTicket)) {
             throw new InvalidParkingTicketException(PROVIDE_YOUR_TICKET_MSG);
         }
         if (!isTicketValid(parkingTicket)) {

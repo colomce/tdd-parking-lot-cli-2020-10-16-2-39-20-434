@@ -10,6 +10,7 @@ import java.util.Optional;
 
 import static com.oocl.cultivation.constants.Constants.PROVIDE_YOUR_TICKET_MSG;
 import static com.oocl.cultivation.constants.Constants.UNRECOGNIZED_PARKING_TICKET_MSG;
+import static java.util.Objects.isNull;
 
 public class HighManagementFetchingBehavior implements IFetchingBehavior {
     private List<ParkingLotEmployee> managementList;
@@ -20,7 +21,7 @@ public class HighManagementFetchingBehavior implements IFetchingBehavior {
 
     @Override
     public Car fetch(ParkingTicket parkingTicket) {
-        if (parkingTicket == null) {
+        if (isNull(parkingTicket)) {
             throw new InvalidParkingTicketException(PROVIDE_YOUR_TICKET_MSG);
         }
         Optional<ParkingLotEmployee> parkingLotEmployee = managementList.stream()
