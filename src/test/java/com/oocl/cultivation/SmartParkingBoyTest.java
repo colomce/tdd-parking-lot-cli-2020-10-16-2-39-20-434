@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -22,7 +23,7 @@ class SmartParkingBoyTest {
     void should_return_parking_ticket_when_smart_parking_boy_parks_a_car_given_parking_lot_with_1_capacity() {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
-        List<ParkingLot> parkingLots = asList(parkingLot);
+        List<ParkingLot> parkingLots = singletonList(parkingLot);
         Car car = new Car();
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
 

@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ServiceManagerTest {
+class ServiceManagerTest {
     @Test
     void should_return_cars_when_manager_parking_boy_fetch_given_two_tickets_from_two_parked_cars() {
         //given
