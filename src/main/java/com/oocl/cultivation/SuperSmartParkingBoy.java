@@ -3,11 +3,15 @@ package com.oocl.cultivation;
 import java.util.List;
 
 public class SuperSmartParkingBoy {
-    public SuperSmartParkingBoy(List<ParkingLot> parkingLots) {
+    private SuperSmartParkingBehavior superSmartParkingBehavior;
+    private List<ParkingLot> parkingLots;
 
+    public SuperSmartParkingBoy(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
+        this.superSmartParkingBehavior = new SuperSmartParkingBehavior(this.parkingLots);
     }
 
     public ParkingTicket park(Car car) {
-        return null;
+        return this.superSmartParkingBehavior.park(car);
     }
 }
