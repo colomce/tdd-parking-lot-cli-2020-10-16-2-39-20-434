@@ -1,4 +1,4 @@
-package com.oocl.cultivation;
+package com.oocl.cultivation.models;
 
 import com.oocl.cultivation.exceptions.NotEnoughPositionException;
 
