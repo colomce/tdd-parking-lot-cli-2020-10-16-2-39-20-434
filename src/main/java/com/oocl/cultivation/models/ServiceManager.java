@@ -2,11 +2,10 @@ package com.oocl.cultivation.models;
 
 import com.oocl.cultivation.behaviors.FetchingBehavior;
 import com.oocl.cultivation.behaviors.HighManagementFetchingBehavior;
+import com.oocl.cultivation.behaviors.HighManagementParkingBehavior;
 import com.oocl.cultivation.behaviors.NormalParkingBehavior;
-import com.oocl.cultivation.exceptions.InvalidParkingTicketException;
 
 import java.util.List;
-import java.util.Optional;
 
 import static java.util.Arrays.asList;
 
@@ -48,10 +47,8 @@ public class ServiceManager extends ParkingLotEmployee {
     }
 
     public ParkingTicket delegateParking(Car car, ParkingLot parkingLot) {
-        Optional<ParkingLotEmployee> parkingLotEmployee = managementList.stream()
-                .filter(parkingBoy -> parkingBoy.getParkingLots().contains(parkingLot))
-                .findFirst();
-        return parkingLotEmployee.map(lotEmployee -> lotEmployee.park(car)).orElse(null);
+        HighManagementParkingBehavior highManagementParkingBehavior = new HighManagementParkingBehavior(managementList, parkingLot);
+        return highManagementParkingBehavior.park(car);
     }
 
     public Car delegateFetch(ParkingTicket parkingTicket) {
