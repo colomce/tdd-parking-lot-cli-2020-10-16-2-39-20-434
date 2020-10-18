@@ -283,16 +283,15 @@ THEN all parking lots manage by different parking boy should have 1 parked car
 should_throw_NotEnoughPosition_with_message_Not_enough_position_when_service_manager_delegate_parking_boy_to_parked_a_car_given_parking_boy_with_two_full_parking_lot
 GIVEN
  - Service manager with
-      - 2 Parking Boys, and each one has a full parking lot with 1 capacity.
-WHEN manager delegate parking of car
- THEN throw NotEnoughPosition exception
- WITH message "Not enough position"
+      - 3 Parking Boys, and each one has a full parking lot with 1 capacity.
+WHEN manager delegate parking of car to first parking lot
+THEN throw NotEnoughPosition exception with message "Not enough position"
 
 should_throw_InvalidParkingTicket_with_message_Please provide your parking ticket_when_service_manager_delegate_fetch_parking_boy_to_parked_a_car_given_invalid_parking_ticket
 GIVEN
  - Service manager with
       - wrong ticket / no ticket
-      - 2 Parking Boys, and each one has a full parking lot with 1 capacity.
+      - 3 Parking Boys, and each one has a full parking lot with 1 capacity.
 WHEN manager delegate fetching of car
  THEN throw InvalidParkingTicket exception with message "Please provide your parking ticket"
 

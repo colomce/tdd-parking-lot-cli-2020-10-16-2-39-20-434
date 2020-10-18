@@ -2,6 +2,7 @@ package com.oocl.cultivation.models;
 
 import com.oocl.cultivation.behaviors.FetchingBehavior;
 import com.oocl.cultivation.behaviors.NormalParkingBehavior;
+import com.oocl.cultivation.exceptions.InvalidParkingTicketException;
 
 import java.util.List;
 import java.util.Optional;
@@ -51,11 +52,16 @@ public class ServiceManager extends ParkingLotEmployee {
     }
 
     public Car delegateFetch(ParkingTicket parkingTicket) {
+        if (parkingTicket == null) {
+            throw new InvalidParkingTicketException("Please provide your parking ticket");
+        }
         Optional<ParkingLotEmployee> parkingLotEmployee = managementList.stream()
                 .filter(parkingBoy -> parkingBoy.getParkingLots().stream()
                         .anyMatch(parkingLot -> parkingLot.isTicketValid(parkingTicket)))
                 .findFirst();
-        return parkingLotEmployee.map(lotEmployee -> lotEmployee.fetch(parkingTicket))
+
+        return parkingLotEmployee
+                .map(lotEmployee -> lotEmployee.fetch(parkingTicket))
                 .orElse(null);
     }
 }

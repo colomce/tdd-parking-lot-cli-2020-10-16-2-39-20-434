@@ -1,5 +1,7 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.exceptions.InvalidParkingTicketException;
+import com.oocl.cultivation.exceptions.NotEnoughPositionException;
 import com.oocl.cultivation.models.Car;
 import com.oocl.cultivation.models.ParkingBoy;
 import com.oocl.cultivation.models.ParkingLot;
@@ -15,6 +17,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ServiceManagerTest {
     @Test
@@ -103,5 +106,66 @@ public class ServiceManagerTest {
         assertSame(firstCar, fetchedFirstCar);
         assertSame(secondCar, fetchedSecondCar);
         assertSame(thirdCar, fetchedThirdCar);
+    }
+
+    @Test
+    void should_throw_NotEnoughPosition_with_message_Not_enough_position_when_service_manager_delegate_three_different_parking_boy_to_park_a_car_given_three_different_parking_boy_with_one_parking_lot_each_that_fully_parked() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        ParkingLot thirdParkingLot = new ParkingLot(1);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        Car thirdCar = new Car();
+        Car fourthCar = new Car();
+
+        ParkingBoy parkingBoy = new ParkingBoy(firstParkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
+
+        ServiceManager serviceManager = new ServiceManager(parkingBoy, smartParkingBoy, superSmartParkingBoy);
+        ParkingTicket firstParkingTicket = serviceManager.delegateParking(firstCar, firstParkingLot);
+        ParkingTicket secondParkingTicket = serviceManager.delegateParking(secondCar, secondParkingLot);
+        ParkingTicket thirdParkingTicket = serviceManager.delegateParking(thirdCar, thirdParkingLot);
+
+        //when
+        NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> serviceManager.delegateParking(fourthCar, firstParkingLot));
+
+        //then
+        assertEquals("Not enough position", notEnoughPositionException.getMessage());
+
+        Car fetchedFirstCar = serviceManager.delegateFetch(firstParkingTicket);
+        Car fetchedSecondCar = serviceManager.delegateFetch(secondParkingTicket);
+        Car fetchedThirdCar = serviceManager.delegateFetch(thirdParkingTicket);
+
+        assertSame(firstCar, fetchedFirstCar);
+        assertSame(secondCar, fetchedSecondCar);
+        assertSame(thirdCar, fetchedThirdCar);
+    }
+
+    @Test
+    void should_throw_InvalidParkingTicket_with_message_Please_provide_your_parking_ticket_when_service_manager_delegate_fetch_parking_boy_to_parked_a_car_given_invalid_parking_ticket() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        ParkingLot thirdParkingLot = new ParkingLot(1);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        Car thirdCar = new Car();
+
+        ParkingBoy parkingBoy = new ParkingBoy(firstParkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
+
+        ServiceManager serviceManager = new ServiceManager(parkingBoy, smartParkingBoy, superSmartParkingBoy);
+        serviceManager.delegateParking(firstCar, firstParkingLot);
+        serviceManager.delegateParking(secondCar, secondParkingLot);
+        serviceManager.delegateParking(thirdCar, thirdParkingLot);
+
+        //when
+        InvalidParkingTicketException invalidParkingTicketException = assertThrows(InvalidParkingTicketException.class, () -> serviceManager.delegateFetch(null));
+
+        //then
+        assertEquals("Please provide your parking ticket", invalidParkingTicketException.getMessage());
     }
 }
