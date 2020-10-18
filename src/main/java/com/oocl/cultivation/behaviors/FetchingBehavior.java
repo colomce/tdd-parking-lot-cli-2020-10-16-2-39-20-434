@@ -1,7 +1,7 @@
 package com.oocl.cultivation.behaviors;
 
 import com.oocl.cultivation.Car;
-import com.oocl.cultivation.InvalidParkingTicketException;
+import com.oocl.cultivation.exceptions.InvalidParkingTicketException;
 import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.ParkingTicket;
 

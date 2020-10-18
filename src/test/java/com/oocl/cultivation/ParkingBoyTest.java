@@ -1,5 +1,7 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.exceptions.InvalidParkingTicketException;
+import com.oocl.cultivation.exceptions.NotEnoughPositionException;
 import com.oocl.cultivation.models.ParkingBoy;
 import org.junit.jupiter.api.Test;
 
