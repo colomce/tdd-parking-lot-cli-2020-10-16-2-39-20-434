@@ -11,6 +11,7 @@ public class ServiceManager extends ParkingLotEmployee {
     private FetchingBehavior fetchingBehavior;
     private NormalParkingBehavior normalParkingBehavior;
     private List<ParkingLot> parkingLots;
+    private List<ParkingLotEmployee> parkingLotEmployees;
 
     public ServiceManager(ParkingLot parkingLot) {
         this.parkingLots = asList(parkingLot);
@@ -25,7 +26,7 @@ public class ServiceManager extends ParkingLotEmployee {
     }
 
     public ServiceManager(ParkingLotEmployee ...managementList) {
-
+        parkingLotEmployees = asList(managementList);
     }
 
     @Override
@@ -39,6 +40,6 @@ public class ServiceManager extends ParkingLotEmployee {
     }
 
     public List<ParkingLotEmployee> getManagementList() {
-        return null;
+        return parkingLotEmployees;
     }
 }
