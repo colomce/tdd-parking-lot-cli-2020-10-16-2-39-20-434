@@ -14,4 +14,8 @@ public class SuperSmartParkingBoy {
     public ParkingTicket park(Car car) {
         return this.superSmartParkingBehavior.park(car);
     }
+
+    public Car fetch(ParkingTicket parkingTicket) {
+        return null;
+    }
 }
