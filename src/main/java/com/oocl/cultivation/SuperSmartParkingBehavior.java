@@ -1,6 +1,9 @@
 package com.oocl.cultivation;
 
+import java.util.Collections;
 import java.util.List;
+
+import static java.util.Comparator.comparing;
 
 public class SuperSmartParkingBehavior implements IParkingBehavior {
     private List<ParkingLot> parkingLots;
@@ -11,6 +14,7 @@ public class SuperSmartParkingBehavior implements IParkingBehavior {
 
     @Override
     public ParkingTicket park(Car car) {
-        return new ParkingTicket();
+        ParkingLot highestPositionRateParkingLot = Collections.max(parkingLots, comparing(ParkingLot::getPositionRate));
+        return highestPositionRateParkingLot.park(car);
     }
 }
