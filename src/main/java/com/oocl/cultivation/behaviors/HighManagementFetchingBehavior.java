@@ -8,6 +8,7 @@ import com.oocl.cultivation.models.ParkingTicket;
 import java.util.List;
 import java.util.Optional;
 
+import static com.oocl.cultivation.constants.Constants.PROVIDE_YOUR_TICKET_MSG;
 import static com.oocl.cultivation.constants.Constants.UNRECOGNIZED_PARKING_TICKET_MSG;
 
 public class HighManagementFetchingBehavior implements IFetchingBehavior {
@@ -20,7 +21,7 @@ public class HighManagementFetchingBehavior implements IFetchingBehavior {
     @Override
     public Car fetch(ParkingTicket parkingTicket) {
         if (parkingTicket == null) {
-            throw new InvalidParkingTicketException("Please provide your parking ticket");
+            throw new InvalidParkingTicketException(PROVIDE_YOUR_TICKET_MSG);
         }
         Optional<ParkingLotEmployee> parkingLotEmployee = managementList.stream()
                 .filter(parkingBoy -> parkingBoy.getParkingLots().stream()
