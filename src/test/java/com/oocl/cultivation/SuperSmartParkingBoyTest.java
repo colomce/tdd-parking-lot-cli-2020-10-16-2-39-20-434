@@ -47,7 +47,7 @@ public class SuperSmartParkingBoyTest {
     }
 
     @Test
-    void should_first_parking_lot_have_11_parked_car_and_return_ticket_when_super_smart_parking_boy_parked_a_car_given_first_parking_lot_with_15_capacity_and_10_car_and_second_parking_lot_with_20_capacity_and_18_parked_car() {
+    void should_first_parking_lot_have_12_parked_car_and_second_parking_lot_have_16_parked_cars__when_super_smart_parking_boy_parked_a_car_given_first_parking_lot_with_15_capacity_and_10_car_and_second_parking_lot_with_20_capacity_and_18_parked_car() {
         //given
         ParkingLot firstParkingLot = new ParkingLot(15);
         ParkingLot secondParkingLot = new ParkingLot(20);
