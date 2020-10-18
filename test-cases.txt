@@ -230,7 +230,7 @@ THEN
  - second parking lot should have, 10 parked cars
 
 
-should_second_parking_lot_have_6_parked_car_and_return_ticket_when_super_smart_parking_boy_parked_a_car_given_first_parking_lot_with_20_capacity_and_18_car_and_second_parking_lot_with_15_capacity_and_10_parked_car
+should_first_parking_lot_have_16_parked_car_and_second_parking_lot_have_12_parked_cars__when_super_smart_parking_boy_parked_a_car_given_second_parking_lot_with_15_capacity_and_10_car_and_first_parking_lot_with_20_capacity_and_18_parked_car
 GIVEN
 - Super Smart Parking boy (Service Manager) with
     - a first parking lot with capacity of 20 with 18 cars parked (2 available pos) = .1
