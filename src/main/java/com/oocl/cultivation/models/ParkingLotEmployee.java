@@ -2,20 +2,20 @@ package com.oocl.cultivation.models;
 
 import java.util.List;
 
-import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 
 public abstract class ParkingLotEmployee {
-    public List<ParkingLot> parkingLots;
+    protected List<ParkingLot> parkingLots;
 
-    public ParkingLotEmployee(List<ParkingLot> parkingLots) {
+    ParkingLotEmployee(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
 
-    public ParkingLotEmployee(ParkingLot parkingLot) {
-        this.parkingLots = asList(parkingLot);
+    ParkingLotEmployee(ParkingLot parkingLot) {
+        this.parkingLots = singletonList(parkingLot);
     }
 
-    protected ParkingLotEmployee() {
+    ParkingLotEmployee() {
     }
 
     public abstract ParkingTicket park(Car car);
