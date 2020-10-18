@@ -8,6 +8,8 @@ import com.oocl.cultivation.models.ParkingTicket;
 import java.util.List;
 import java.util.Optional;
 
+import static com.oocl.cultivation.constants.Constants.NOT_ENOUGH_POSITION_MSG;
+
 public class NormalParkingBehavior implements IParkingBehavior {
 
     private List<ParkingLot> parkingLots;
@@ -21,6 +23,6 @@ public class NormalParkingBehavior implements IParkingBehavior {
         Optional<ParkingLot> optionalParkingLot = parkingLots.stream().filter(parking -> parking.getAvailableCapacity() > 0).findFirst();
         return optionalParkingLot
                 .map(parkingLot -> parkingLot.park(car))
-                .orElseThrow(() -> new NotEnoughPositionException("Not enough position"));
+                .orElseThrow(() -> new NotEnoughPositionException(NOT_ENOUGH_POSITION_MSG));
     }
 }

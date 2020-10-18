@@ -5,6 +5,8 @@ import com.oocl.cultivation.exceptions.NotEnoughPositionException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.oocl.cultivation.constants.Constants.NOT_ENOUGH_POSITION_MSG;
+
 public class ParkingLot {
     private int capacity;
     private Map<ParkingTicket, Car> parkingSpace = new HashMap<>();
@@ -27,7 +29,7 @@ public class ParkingLot {
             parkingSpace.put(parkingTicket, car);
             return parkingTicket;
         } else {
-            throw new NotEnoughPositionException("Not enough position");
+            throw new NotEnoughPositionException(NOT_ENOUGH_POSITION_MSG);
         }
     }
 
