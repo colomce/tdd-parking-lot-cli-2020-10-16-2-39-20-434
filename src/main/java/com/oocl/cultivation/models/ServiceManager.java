@@ -1,6 +1,7 @@
 package com.oocl.cultivation.models;
 
 import com.oocl.cultivation.behaviors.FetchingBehavior;
+import com.oocl.cultivation.behaviors.HighManagementFetchingBehavior;
 import com.oocl.cultivation.behaviors.NormalParkingBehavior;
 import com.oocl.cultivation.exceptions.InvalidParkingTicketException;
 
@@ -11,6 +12,7 @@ import static java.util.Arrays.asList;
 
 public class ServiceManager extends ParkingLotEmployee {
     private FetchingBehavior fetchingBehavior;
+    private HighManagementFetchingBehavior highManagementFetchingBehavior;
     private NormalParkingBehavior normalParkingBehavior;
     private List<ParkingLotEmployee> managementList;
 
@@ -28,6 +30,7 @@ public class ServiceManager extends ParkingLotEmployee {
 
     public ServiceManager(ParkingLotEmployee... managementList) {
         this.managementList = asList(managementList);
+        highManagementFetchingBehavior = new HighManagementFetchingBehavior(this.managementList);
     }
 
     @Override
@@ -52,16 +55,6 @@ public class ServiceManager extends ParkingLotEmployee {
     }
 
     public Car delegateFetch(ParkingTicket parkingTicket) {
-        if (parkingTicket == null) {
-            throw new InvalidParkingTicketException("Please provide your parking ticket");
-        }
-        Optional<ParkingLotEmployee> parkingLotEmployee = managementList.stream()
-                .filter(parkingBoy -> parkingBoy.getParkingLots().stream()
-                        .anyMatch(parkingLot -> parkingLot.isTicketValid(parkingTicket)))
-                .findFirst();
-
-        return parkingLotEmployee
-                .map(lotEmployee -> lotEmployee.fetch(parkingTicket))
-                .orElseThrow(() -> new InvalidParkingTicketException("Unrecognized parking ticket"));
+        return highManagementFetchingBehavior.fetch(parkingTicket);
     }
 }
