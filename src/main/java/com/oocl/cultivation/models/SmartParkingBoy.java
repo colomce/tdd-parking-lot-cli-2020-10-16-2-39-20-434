@@ -1,10 +1,10 @@
 package com.oocl.cultivation.models;
 
 import com.oocl.cultivation.Car;
-import com.oocl.cultivation.FetchingBehavior;
+import com.oocl.cultivation.behaviors.FetchingBehavior;
 import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.ParkingTicket;
-import com.oocl.cultivation.SmartParkingBehavior;
+import com.oocl.cultivation.behaviors.SmartParkingBehavior;
 
 import java.util.List;
 

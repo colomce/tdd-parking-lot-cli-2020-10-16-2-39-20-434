@@ -21,7 +21,7 @@ public class ParkingLot {
         return capacity;
     }
 
-    ParkingTicket park(Car car) {
+    public ParkingTicket park(Car car) {
         ParkingTicket parkingTicket = new ParkingTicket();
         if (getAvailableCapacity() > 0) {
             parkingSpace.put(parkingTicket, car);
@@ -31,7 +31,7 @@ public class ParkingLot {
         }
     }
 
-    Car fetch(ParkingTicket parkingTicket) {
+    public Car fetch(ParkingTicket parkingTicket) {
         Car car = parkingSpace.get(parkingTicket);
         parkingSpace.remove(parkingTicket);
         return car;
@@ -41,7 +41,7 @@ public class ParkingLot {
         return capacity - parkingSpace.size();
     }
 
-    boolean isTicketValid(ParkingTicket parkingTicket) {
+    public boolean isTicketValid(ParkingTicket parkingTicket) {
         return parkingSpace.get(parkingTicket) != null;
     }
 

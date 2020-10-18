@@ -1,8 +1,8 @@
 package com.oocl.cultivation.models;
 
 import com.oocl.cultivation.Car;
-import com.oocl.cultivation.FetchingBehavior;
-import com.oocl.cultivation.NormalParkingBehavior;
+import com.oocl.cultivation.behaviors.FetchingBehavior;
+import com.oocl.cultivation.behaviors.NormalParkingBehavior;
 import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.ParkingTicket;
 
