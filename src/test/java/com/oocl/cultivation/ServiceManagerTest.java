@@ -168,4 +168,32 @@ public class ServiceManagerTest {
         //then
         assertEquals("Please provide your parking ticket", invalidParkingTicketException.getMessage());
     }
+
+    @Test
+    void should_throw_InvalidParkingTicket_with_message_Unrecognized_parking_ticket_when_service_manager_delegate_fetch_parking_boy_to_parked_a_car_given_wrong_parking_ticket() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        ParkingLot thirdParkingLot = new ParkingLot(1);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        Car thirdCar = new Car();
+
+        ParkingBoy parkingBoy = new ParkingBoy(firstParkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
+
+        ServiceManager serviceManager = new ServiceManager(parkingBoy, smartParkingBoy, superSmartParkingBoy);
+        serviceManager.delegateParking(firstCar, firstParkingLot);
+        serviceManager.delegateParking(secondCar, secondParkingLot);
+        serviceManager.delegateParking(thirdCar, thirdParkingLot);
+
+        //when
+        InvalidParkingTicketException invalidParkingTicketException =
+                assertThrows(InvalidParkingTicketException.class,
+                        () -> serviceManager.delegateFetch(new ParkingTicket()));
+
+        //then
+        assertEquals("Unrecognized parking ticket", invalidParkingTicketException.getMessage());
+    }
 }
