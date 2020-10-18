@@ -2,9 +2,7 @@ package com.oocl.cultivation.models;
 
 import com.oocl.cultivation.exceptions.NotEnoughPositionException;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ParkingLot {
@@ -45,10 +43,6 @@ public class ParkingLot {
 
     public boolean isTicketValid(ParkingTicket parkingTicket) {
         return parkingSpace.get(parkingTicket) != null;
-    }
-
-    List<ParkingTicket> getParkingTickets() {
-        return new ArrayList<>(parkingSpace.keySet());
     }
 
     public int getNumberOfParkedCars() {
