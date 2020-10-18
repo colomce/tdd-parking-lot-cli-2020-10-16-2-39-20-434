@@ -4,7 +4,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
-public class ParkingBoy {
+public class ParkingBoy extends ParkingLotEmployee {
 
     private FetchingBehavior fetchingBehavior;
     private NormalParkingBehavior normalParkingBehavior;
@@ -14,7 +14,6 @@ public class ParkingBoy {
         this.parkingLots = asList(parkingLot);
         fetchingBehavior = new FetchingBehavior(this.parkingLots);
         normalParkingBehavior = new NormalParkingBehavior(this.parkingLots);
-
     }
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
