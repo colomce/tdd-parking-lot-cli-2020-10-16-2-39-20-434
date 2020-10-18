@@ -152,7 +152,7 @@ class SmartParkingBoyTest {
     }
 
     @Test
-    void should_throw_InvalidParkingTicket_with_message_Unrecognized_parking_ticket_when_smart_parking_boy_parked_a_car_given_wrong_parking_ticket() {
+    void should_throw_InvalidParkingTicket_with_message_Unrecognized_parking_ticket_when_smart_parking_boy_fetched_a_car_given_wrong_parking_ticket() {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();

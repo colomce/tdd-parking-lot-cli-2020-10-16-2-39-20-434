@@ -177,12 +177,12 @@ should_second_parking_have_one_parked_car_when_smart_parking_boy_parks_a_car_giv
 **WHEN** smart parking boy parks the car   
 **THEN** second parking lot should have, 1 parked car, and returns a parking ticket   
 
-should_throw_InvalidParkingTicket_with_message_Unrecognized_parking_ticket_when_smart_parking_boy_parked_a_car_given_wrong_parking_ticket   
+should_throw_InvalidParkingTicket_with_message_Unrecognized_parking_ticket_when_smart_parking_boy_fetched_a_car_given_wrong_parking_ticket   
 **GIVEN** Service manager with   
 - wrong ticket   
 - 1 Parking Boys, with one parking lot with 1 parked car
 
-**WHEN** manager delegate fetching of car   
+**WHEN** smart parking boy fetched a car   
 **THEN** throw InvalidParkingTicket exception with message "Unrecognized parking ticket"   
 
 *========== Story 5 ==========*   
@@ -250,6 +250,14 @@ should_parking_lot_have_15_11_2_parked_cars_when_super_smart_parking_boy_parked_
  - first parking lot should have, 15 parked car,   
  - second parking lot should have, 11 parked cars   
  - third parking lot should have, 2 parked cars   
+
+should_throw_InvalidParkingTicket_with_message_Unrecognized_parking_ticket_when_super_smart_parking_boy_fetched_a_car_given_wrong_parking_ticket
+**GIVEN** Service manager with   
+- wrong ticket   
+- 1 Super Smart Parking Boy, with one parking lot with 1 parked car
+
+**WHEN** super smart parking boy fetched a car   
+**THEN** throw InvalidParkingTicket exception with message "Unrecognized parking ticket"   
    
 *========== Story 6 ==========*   
 should_return_cars_when_manager_parking_boy_fetch_given_two_tickets_from_two_parked_cars   

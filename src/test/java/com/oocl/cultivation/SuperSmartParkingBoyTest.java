@@ -156,6 +156,24 @@ public class SuperSmartParkingBoyTest {
         assertEquals("Please provide your parking ticket", invalidParkingTicketException.getMessage());
     }
 
+    @Test
+    void should_throw_InvalidParkingTicket_with_message_Unrecognized_parking_ticket_when_super_smart_parking_boy_fetched_a_car_given_wrong_parking_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car car = new Car();
+
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLot);
+        superSmartParkingBoy.park(car);
+
+        //when
+        InvalidParkingTicketException invalidParkingTicketException =
+                assertThrows(InvalidParkingTicketException.class,
+                        () -> superSmartParkingBoy.fetch(new ParkingTicket()));
+
+        //then
+        assertEquals("Unrecognized parking ticket", invalidParkingTicketException.getMessage());
+    }
+
     void parkMultipleTimes(SuperSmartParkingBoy superSmartParkingBoy, int noOfCars) {
         for (int i = 1; i <= noOfCars; i++) {
             superSmartParkingBoy.park(new Car());
