@@ -62,6 +62,6 @@ public class ServiceManager extends ParkingLotEmployee {
 
         return parkingLotEmployee
                 .map(lotEmployee -> lotEmployee.fetch(parkingTicket))
-                .orElse(null);
+                .orElseThrow(() -> new InvalidParkingTicketException("Unrecognized parking ticket"));
     }
 }
