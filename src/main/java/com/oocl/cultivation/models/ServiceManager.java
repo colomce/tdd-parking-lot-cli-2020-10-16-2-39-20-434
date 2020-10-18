@@ -4,29 +4,29 @@ import com.oocl.cultivation.behaviors.FetchingBehavior;
 import com.oocl.cultivation.behaviors.NormalParkingBehavior;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Arrays.asList;
 
 public class ServiceManager extends ParkingLotEmployee {
     private FetchingBehavior fetchingBehavior;
     private NormalParkingBehavior normalParkingBehavior;
-    private List<ParkingLot> parkingLots;
-    private List<ParkingLotEmployee> parkingLotEmployees;
+    private List<ParkingLotEmployee> managementList;
 
     public ServiceManager(ParkingLot parkingLot) {
-        this.parkingLots = asList(parkingLot);
+        super(parkingLot);
         fetchingBehavior = new FetchingBehavior(this.parkingLots);
         normalParkingBehavior = new NormalParkingBehavior(this.parkingLots);
     }
 
     public ServiceManager(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
+        super(parkingLots);
         fetchingBehavior = new FetchingBehavior(this.parkingLots);
         normalParkingBehavior = new NormalParkingBehavior(this.parkingLots);
     }
 
-    public ServiceManager(ParkingLotEmployee ...managementList) {
-        parkingLotEmployees = asList(managementList);
+    public ServiceManager(ParkingLotEmployee... managementList) {
+        this.managementList = asList(managementList);
     }
 
     @Override
@@ -40,14 +40,22 @@ public class ServiceManager extends ParkingLotEmployee {
     }
 
     public List<ParkingLotEmployee> getManagementList() {
-        return parkingLotEmployees;
+        return managementList;
     }
 
-    public ParkingTicket delegateParking(Car firstCar, ParkingLot firstParkingLot) {
-        return null;
+    public ParkingTicket delegateParking(Car car, ParkingLot parkingLot) {
+        Optional<ParkingLotEmployee> parkingLotEmployee = managementList.stream()
+                .filter(parkingBoy -> parkingBoy.getParkingLots().contains(parkingLot))
+                .findFirst();
+        return parkingLotEmployee.map(lotEmployee -> lotEmployee.park(car)).orElse(null);
     }
 
-    public Car delegateFetch(ParkingTicket firstParkingTicket) {
-        return null;
+    public Car delegateFetch(ParkingTicket parkingTicket) {
+        Optional<ParkingLotEmployee> parkingLotEmployee = managementList.stream()
+                .filter(parkingBoy -> parkingBoy.getParkingLots().stream()
+                        .anyMatch(parkingLot -> parkingLot.isTicketValid(parkingTicket)))
+                .findFirst();
+        return parkingLotEmployee.map(lotEmployee -> lotEmployee.fetch(parkingTicket))
+                .orElse(null);
     }
 }

@@ -8,16 +8,17 @@ import java.util.List;
 public class SuperSmartParkingBoy extends ParkingLotEmployee {
     private SuperSmartParkingBehavior superSmartParkingBehavior;
     private FetchingBehavior fetchingBehavior;
-    private List<ParkingLot> parkingLots;
 
     public SuperSmartParkingBoy(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
+        super(parkingLots);
         this.superSmartParkingBehavior = new SuperSmartParkingBehavior(this.parkingLots);
         this.fetchingBehavior = new FetchingBehavior(parkingLots);
     }
 
-    public SuperSmartParkingBoy(ParkingLot thirdParkingLot) {
-
+    public SuperSmartParkingBoy(ParkingLot parkingLot) {
+        super(parkingLot);
+        this.superSmartParkingBehavior = new SuperSmartParkingBehavior(this.parkingLots);
+        this.fetchingBehavior = new FetchingBehavior(parkingLots);
     }
 
     public ParkingTicket park(Car car) {
