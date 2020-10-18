@@ -150,5 +150,23 @@ class SmartParkingBoyTest {
         //then
         assertEquals("Please provide your parking ticket", invalidParkingTicketException.getMessage());
     }
-    
+
+    @Test
+    void should_throw_InvalidParkingTicket_with_message_Unrecognized_parking_ticket_when_smart_parking_boy_parked_a_car_given_wrong_parking_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car car = new Car();
+
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
+        smartParkingBoy.park(car);
+
+        //when
+        InvalidParkingTicketException invalidParkingTicketException =
+                assertThrows(InvalidParkingTicketException.class,
+                        () -> smartParkingBoy.fetch(new ParkingTicket()));
+
+        //then
+        assertEquals("Unrecognized parking ticket", invalidParkingTicketException.getMessage());
+    }
+
 }

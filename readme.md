@@ -176,7 +176,15 @@ should_second_parking_have_one_parked_car_when_smart_parking_boy_parks_a_car_giv
     
 **WHEN** smart parking boy parks the car   
 **THEN** second parking lot should have, 1 parked car, and returns a parking ticket   
-   
+
+should_throw_InvalidParkingTicket_with_message_Unrecognized_parking_ticket_when_smart_parking_boy_parked_a_car_given_wrong_parking_ticket   
+**GIVEN** Service manager with   
+- wrong ticket   
+- 1 Parking Boys, with one parking lot with 1 parked car
+
+**WHEN** manager delegate fetching of car   
+**THEN** throw InvalidParkingTicket exception with message "Unrecognized parking ticket"   
+
 *========== Story 5 ==========*   
 should_return_parking_ticket_when_super_smart_parking_boy_parks_a_car_given_parking_lot_with_1_capacity   
 **GIVEN**   
