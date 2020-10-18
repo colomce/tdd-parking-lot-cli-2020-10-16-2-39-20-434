@@ -273,6 +273,13 @@ GIVEN
 WHEN manager get list of parking boys
 THEN parking boys list has size of 3
 
+should_be_able_to_park_all_cars_in_different_parking_lot_when_manager_delegate_parking_a_car_given_3_different_parking_boys_with_parking_lots_1_capacity
+GIVEN
+ - Service manager with
+      - 3 Parking Boys, and each one has a parking lot with 1 capacity.
+WHEN manager delgate parking of car in a parking lot
+THEN all parking lots manage by different parking boy should have 1 parked car
+
 should_throw_NotEnoughPosition_with_message_Not_enough_position_when_service_manager_delegate_parking_boy_to_parked_a_car_given_parking_boy_with_two_full_parking_lot
 GIVEN
  - Service manager with

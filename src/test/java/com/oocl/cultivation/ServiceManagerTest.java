@@ -75,4 +75,33 @@ public class ServiceManagerTest {
         assertEquals(3, serviceManager.getManagementList().size());
     }
 
+    @Test
+    void should_be_able_to_park_all_cars_in_different_parking_lot_when_manager_delegate_parking_a_car_given_3_different_parking_boys_with_parking_lots_1_capacity() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        ParkingLot thirdParkingLot = new ParkingLot(1);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        Car thirdCar = new Car();
+
+        ParkingBoy parkingBoy = new ParkingBoy(firstParkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
+
+        ServiceManager serviceManager = new ServiceManager(parkingBoy, smartParkingBoy, superSmartParkingBoy);
+        //when
+        ParkingTicket firstParkingTicket = serviceManager.delegateParking(firstCar, firstParkingLot);
+        ParkingTicket secondParkingTicket = serviceManager.delegateParking(secondCar, secondParkingLot);
+        ParkingTicket thirdParkingTicket = serviceManager.delegateParking(thirdCar, thirdParkingLot);
+
+        Car fetchedFirstCar = serviceManager.fetch(firstParkingTicket);
+        Car fetchedSecondCar = serviceManager.fetch(secondParkingTicket);
+        Car fetchedThirdCar = serviceManager.fetch(thirdParkingTicket);
+
+        //then
+        assertSame(firstCar, fetchedFirstCar);
+        assertSame(secondCar, fetchedSecondCar);
+        assertSame(thirdCar, fetchedThirdCar);
+    }
 }

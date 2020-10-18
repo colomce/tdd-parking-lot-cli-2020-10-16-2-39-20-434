@@ -42,4 +42,8 @@ public class ServiceManager extends ParkingLotEmployee {
     public List<ParkingLotEmployee> getManagementList() {
         return parkingLotEmployees;
     }
+
+    public ParkingTicket delegateParking(Car firstCar, ParkingLot firstParkingLot) {
+        return null;
+    }
 }
