@@ -94,6 +94,24 @@ public class SuperSmartParkingBoyTest {
         assertEquals(12, secondParkingLot.getNumberOfParkedCars());
     }
 
+    @Test
+    void should_parking_lot_have_15_11_2_parked_cars_when_super_smart_parking_boy_parked_a_car_given_three_parking_lot_with_capacity_20_15_2_and_28_parked_cars() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(20);
+        ParkingLot secondParkingLot = new ParkingLot(15);
+        ParkingLot thirdParkingLot = new ParkingLot(2);
+        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot, thirdParkingLot);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
+
+        //when
+        parkMultipleTimes(superSmartParkingBoy, 28);
+
+        //then
+        assertEquals(15, firstParkingLot.getNumberOfParkedCars());
+        assertEquals(11, secondParkingLot.getNumberOfParkedCars());
+        assertEquals(2, thirdParkingLot.getNumberOfParkedCars());
+    }
+
     void parkMultipleTimes(SuperSmartParkingBoy superSmartParkingBoy, int noOfCars) {
         for (int i = 1; i <= noOfCars; i++) {
             superSmartParkingBoy.park(new Car());
