@@ -9,7 +9,7 @@ public class SmartParkingBehavior implements IParkingBehavior {
 
     private List<ParkingLot> parkingLots;
 
-    SmartParkingBehavior(List<ParkingLot> parkingLots) {
+    public SmartParkingBehavior(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
 
