@@ -261,6 +261,11 @@ should_return_cars_when_manager_parking_boy_fetch_given_two_tickets_from_two_par
  WHEN fetch the two cars with corresponding tickets
  THEN two cars are fetched
 
+should_fetch_two_right_cars_when_manager_parking_boy_fetch_given_two_parked_cars_two_parking_lot_and_parking_tickets
+ GIVEN - 2 parked cars
+ WHEN a manager parking boy fetch both cars
+ THEN return 2 correct cars based on Parking tickets.
+
 should_return_two_parking_boys_when_manager_get_list_of_parking_boy_given_2_parking_boys_with_parking_lots_1_capacity
 GIVEN
  - Service manager with
