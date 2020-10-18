@@ -95,9 +95,9 @@ public class ServiceManagerTest {
         ParkingTicket secondParkingTicket = serviceManager.delegateParking(secondCar, secondParkingLot);
         ParkingTicket thirdParkingTicket = serviceManager.delegateParking(thirdCar, thirdParkingLot);
 
-        Car fetchedFirstCar = serviceManager.fetch(firstParkingTicket);
-        Car fetchedSecondCar = serviceManager.fetch(secondParkingTicket);
-        Car fetchedThirdCar = serviceManager.fetch(thirdParkingTicket);
+        Car fetchedFirstCar = serviceManager.delegateFetch(firstParkingTicket);
+        Car fetchedSecondCar = serviceManager.delegateFetch(secondParkingTicket);
+        Car fetchedThirdCar = serviceManager.delegateFetch(thirdParkingTicket);
 
         //then
         assertSame(firstCar, fetchedFirstCar);

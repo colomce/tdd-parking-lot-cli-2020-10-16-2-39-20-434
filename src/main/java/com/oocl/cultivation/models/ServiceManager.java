@@ -46,4 +46,8 @@ public class ServiceManager extends ParkingLotEmployee {
     public ParkingTicket delegateParking(Car firstCar, ParkingLot firstParkingLot) {
         return null;
     }
+
+    public Car delegateFetch(ParkingTicket firstParkingTicket) {
+        return null;
+    }
 }
