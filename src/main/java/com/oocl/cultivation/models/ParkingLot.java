@@ -2,14 +2,13 @@ package com.oocl.cultivation.models;
 
 import com.oocl.cultivation.exceptions.NotEnoughPositionException;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static com.oocl.cultivation.constants.ParkingLotConstants.NOT_ENOUGH_POSITION_MSG;
 
 public class ParkingLot {
     private int capacity;
-    private Map<ParkingTicket, Car> parkingSpace = new HashMap<>();
+    private ConcurrentHashMap<ParkingTicket, Car> parkingSpace = new ConcurrentHashMap<>();
 
     public ParkingLot() {
         capacity = 10;
