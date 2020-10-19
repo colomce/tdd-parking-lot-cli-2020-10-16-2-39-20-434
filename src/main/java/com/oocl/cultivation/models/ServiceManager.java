@@ -28,6 +28,7 @@ public class ServiceManager extends ParkingLotEmployee {
     }
 
     public ServiceManager(ParkingLotEmployee... managementList) {
+        super();
         this.managementList = asList(managementList);
         highManagementFetchingBehavior = new HighManagementFetchingBehavior(this.managementList);
     }
