@@ -12,6 +12,7 @@ import com.oocl.cultivation.models.SuperSmartParkingBoy;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -70,7 +71,7 @@ class ServiceManagerTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
 
-        ServiceManager serviceManager = new ServiceManager(parkingBoy, smartParkingBoy, superSmartParkingBoy);
+        ServiceManager serviceManager = new ServiceManager(Collections.emptyList(), Arrays.asList(parkingBoy, smartParkingBoy, superSmartParkingBoy));
         //when
 
         //then
@@ -92,7 +93,7 @@ class ServiceManagerTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
 
-        ServiceManager serviceManager = new ServiceManager(parkingBoy, smartParkingBoy, superSmartParkingBoy);
+        ServiceManager serviceManager = new ServiceManager(Collections.emptyList(), Arrays.asList(parkingBoy, smartParkingBoy, superSmartParkingBoy));
         //when
         ParkingTicket firstParkingTicket = serviceManager.delegateParking(firstCar, firstParkingLot);
         ParkingTicket secondParkingTicket = serviceManager.delegateParking(secondCar, secondParkingLot);
@@ -123,7 +124,7 @@ class ServiceManagerTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
 
-        ServiceManager serviceManager = new ServiceManager(parkingBoy, smartParkingBoy, superSmartParkingBoy);
+        ServiceManager serviceManager = new ServiceManager(Collections.emptyList(), Arrays.asList(parkingBoy, smartParkingBoy, superSmartParkingBoy));
         ParkingTicket firstParkingTicket = serviceManager.delegateParking(firstCar, firstParkingLot);
         ParkingTicket secondParkingTicket = serviceManager.delegateParking(secondCar, secondParkingLot);
         ParkingTicket thirdParkingTicket = serviceManager.delegateParking(thirdCar, thirdParkingLot);
@@ -157,7 +158,7 @@ class ServiceManagerTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
 
-        ServiceManager serviceManager = new ServiceManager(parkingBoy, smartParkingBoy, superSmartParkingBoy);
+        ServiceManager serviceManager = new ServiceManager(Collections.emptyList(), Arrays.asList(parkingBoy, smartParkingBoy, superSmartParkingBoy));
         serviceManager.delegateParking(firstCar, firstParkingLot);
         serviceManager.delegateParking(secondCar, secondParkingLot);
         serviceManager.delegateParking(thirdCar, thirdParkingLot);
@@ -183,7 +184,7 @@ class ServiceManagerTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
 
-        ServiceManager serviceManager = new ServiceManager(parkingBoy, smartParkingBoy, superSmartParkingBoy);
+        ServiceManager serviceManager = new ServiceManager(Collections.emptyList(), Arrays.asList(parkingBoy, smartParkingBoy, superSmartParkingBoy));
         serviceManager.delegateParking(firstCar, firstParkingLot);
         serviceManager.delegateParking(secondCar, secondParkingLot);
         serviceManager.delegateParking(thirdCar, thirdParkingLot);

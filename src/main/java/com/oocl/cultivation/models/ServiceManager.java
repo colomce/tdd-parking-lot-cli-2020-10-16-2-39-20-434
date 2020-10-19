@@ -5,9 +5,8 @@ import com.oocl.cultivation.behaviors.HighManagementFetchingBehavior;
 import com.oocl.cultivation.behaviors.HighManagementParkingBehavior;
 import com.oocl.cultivation.behaviors.NormalParkingBehavior;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import static java.util.Arrays.asList;
 
 public class ServiceManager extends ParkingLotEmployee {
     private FetchingBehavior fetchingBehavior;
@@ -17,19 +16,23 @@ public class ServiceManager extends ParkingLotEmployee {
 
     public ServiceManager(ParkingLot parkingLot) {
         super(parkingLot);
+        managementList = new ArrayList<>();
         fetchingBehavior = new FetchingBehavior(this.parkingLots);
         normalParkingBehavior = new NormalParkingBehavior(this.parkingLots);
     }
 
     public ServiceManager(List<ParkingLot> parkingLots) {
         super(parkingLots);
+        managementList = new ArrayList<>();
         fetchingBehavior = new FetchingBehavior(this.parkingLots);
         normalParkingBehavior = new NormalParkingBehavior(this.parkingLots);
     }
 
-    public ServiceManager(ParkingLotEmployee... managementList) {
-        super();
-        this.managementList = asList(managementList);
+    public ServiceManager(List<ParkingLot> parkingLots, List<ParkingLotEmployee> managementList) {
+        super(parkingLots);
+        this.managementList = managementList;
+        fetchingBehavior = new FetchingBehavior(this.parkingLots);
+        normalParkingBehavior = new NormalParkingBehavior(this.parkingLots);
         highManagementFetchingBehavior = new HighManagementFetchingBehavior(this.managementList);
     }
 
