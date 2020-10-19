@@ -5,7 +5,7 @@ import com.oocl.cultivation.exceptions.NotEnoughPositionException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.oocl.cultivation.constants.Constants.NOT_ENOUGH_POSITION_MSG;
+import static com.oocl.cultivation.constants.ParkingLotConstants.NOT_ENOUGH_POSITION_MSG;
 
 public class ParkingLot {
     private int capacity;

@@ -8,8 +8,8 @@ import com.oocl.cultivation.models.ParkingTicket;
 import java.util.List;
 import java.util.Optional;
 
-import static com.oocl.cultivation.constants.Constants.PROVIDE_YOUR_TICKET_MSG;
-import static com.oocl.cultivation.constants.Constants.UNRECOGNIZED_PARKING_TICKET_MSG;
+import static com.oocl.cultivation.constants.ParkingLotConstants.PROVIDE_YOUR_TICKET_MSG;
+import static com.oocl.cultivation.constants.ParkingLotConstants.UNRECOGNIZED_PARKING_TICKET_MSG;
 import static java.util.Objects.isNull;
 
 public class HighManagementFetchingBehavior implements IFetchingBehavior {

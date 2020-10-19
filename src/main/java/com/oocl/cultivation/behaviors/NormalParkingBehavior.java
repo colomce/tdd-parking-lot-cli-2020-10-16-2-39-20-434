@@ -8,7 +8,7 @@ import com.oocl.cultivation.models.ParkingTicket;
 import java.util.List;
 import java.util.Optional;
 
-import static com.oocl.cultivation.constants.Constants.NOT_ENOUGH_POSITION_MSG;
+import static com.oocl.cultivation.constants.ParkingLotConstants.NOT_ENOUGH_POSITION_MSG;
 
 public class NormalParkingBehavior implements IParkingBehavior {
 

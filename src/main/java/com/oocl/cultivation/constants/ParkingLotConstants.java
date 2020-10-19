@@ -1,7 +1,7 @@
 package com.oocl.cultivation.constants;
 
-public final class Constants {
-    private Constants() {
+public final class ParkingLotConstants {
+    private ParkingLotConstants() {
     }
 
     public static final String NOT_ENOUGH_POSITION_MSG = "Not enough position";
