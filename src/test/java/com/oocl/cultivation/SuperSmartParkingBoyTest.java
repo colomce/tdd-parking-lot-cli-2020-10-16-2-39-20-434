@@ -8,10 +8,10 @@ import com.oocl.cultivation.models.ParkingTicket;
 import com.oocl.cultivation.models.SuperSmartParkingBoy;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -22,7 +22,7 @@ class SuperSmartParkingBoyTest {
     void should_return_parking_ticket_when_super_mart_parking_boy_parks_a_car_given_parking_lot_with_1_capacity() {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
-        List<ParkingLot> parkingLots = singletonList(parkingLot);
+        List<ParkingLot> parkingLots = Collections.singletonList(parkingLot);
         Car car = new Car();
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
 
@@ -38,7 +38,7 @@ class SuperSmartParkingBoyTest {
         //given
         ParkingLot firstParkingLot = new ParkingLot(5);
         ParkingLot secondParkingLot = new ParkingLot(5);
-        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
         Car firstCar = new Car();
         Car secondCar = new Car();
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
@@ -59,7 +59,7 @@ class SuperSmartParkingBoyTest {
         //given
         ParkingLot firstParkingLot = new ParkingLot(15);
         ParkingLot secondParkingLot = new ParkingLot(20);
-        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
 
         //when
@@ -75,7 +75,7 @@ class SuperSmartParkingBoyTest {
         //given
         ParkingLot firstParkingLot = new ParkingLot(10);
         ParkingLot secondParkingLot = new ParkingLot(20);
-        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
 
         //when
@@ -91,7 +91,7 @@ class SuperSmartParkingBoyTest {
         //given
         ParkingLot firstParkingLot = new ParkingLot(20);
         ParkingLot secondParkingLot = new ParkingLot(15);
-        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
 
         //when
@@ -108,7 +108,7 @@ class SuperSmartParkingBoyTest {
         ParkingLot firstParkingLot = new ParkingLot(20);
         ParkingLot secondParkingLot = new ParkingLot(15);
         ParkingLot thirdParkingLot = new ParkingLot(2);
-        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot, thirdParkingLot);
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot, thirdParkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
 
         //when
@@ -125,7 +125,7 @@ class SuperSmartParkingBoyTest {
         //given
         ParkingLot firstParkingLot = new ParkingLot(1);
         ParkingLot secondParkingLot = new ParkingLot(1);
-        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
         Car firstCar = new Car();
         Car secondCar = new Car();
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
@@ -143,7 +143,7 @@ class SuperSmartParkingBoyTest {
     void should_throw_InvalidParkingTicket_with_message_Please_provide_your_parking_ticket_when_super_smart_parking_boy_parked_a_car_given_two_parking_lots() {
         ParkingLot firstParkingLot = new ParkingLot(1);
         ParkingLot secondParkingLot = new ParkingLot(1);
-        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
         Car firstCar = new Car();
         Car secondCar = new Car();
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
