@@ -5,20 +5,18 @@ import com.oocl.cultivation.behaviors.NormalParkingBehavior;
 
 import java.util.List;
 
-import static java.util.Collections.singletonList;
-
 public class ParkingBoy extends ParkingLotEmployee {
     private FetchingBehavior fetchingBehavior;
     private NormalParkingBehavior normalParkingBehavior;
 
     public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLots = singletonList(parkingLot);
+        super(parkingLot);
         fetchingBehavior = new FetchingBehavior(this.parkingLots);
         normalParkingBehavior = new NormalParkingBehavior(this.parkingLots);
     }
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
+        super(parkingLots);
         fetchingBehavior = new FetchingBehavior(this.parkingLots);
         normalParkingBehavior = new NormalParkingBehavior(this.parkingLots);
     }
