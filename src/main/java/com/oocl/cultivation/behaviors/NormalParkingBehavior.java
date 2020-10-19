@@ -21,7 +21,7 @@ public class NormalParkingBehavior implements IParkingBehavior {
     @Override
     public ParkingTicket park(Car car) {
         Optional<ParkingLot> optionalParkingLot = parkingLots.stream()
-                .filter(parking -> parking.getAvailableCapacity() > 0)
+                .filter(ParkingLot::hasAvailablePosition)
                 .findFirst();
 
         return optionalParkingLot

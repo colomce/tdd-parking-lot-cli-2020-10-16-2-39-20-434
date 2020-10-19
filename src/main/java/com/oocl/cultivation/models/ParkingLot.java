@@ -24,12 +24,16 @@ public class ParkingLot {
 
     public ParkingTicket park(Car car) {
         ParkingTicket parkingTicket = new ParkingTicket();
-        if (getAvailableCapacity() > 0) {
+        if (hasAvailablePosition()) {
             parkingSpace.put(parkingTicket, car);
             return parkingTicket;
         } else {
             throw new NotEnoughPositionException(NOT_ENOUGH_POSITION_MSG);
         }
+    }
+
+    public boolean hasAvailablePosition() {
+        return getAvailableCapacity() > 0;
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
