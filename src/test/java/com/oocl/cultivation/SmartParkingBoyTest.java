@@ -8,10 +8,10 @@ import com.oocl.cultivation.models.ParkingTicket;
 import com.oocl.cultivation.models.SmartParkingBoy;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -23,7 +23,7 @@ class SmartParkingBoyTest {
     void should_return_parking_ticket_when_smart_parking_boy_parks_a_car_given_parking_lot_with_1_capacity() {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
-        List<ParkingLot> parkingLots = singletonList(parkingLot);
+        List<ParkingLot> parkingLots = Collections.singletonList(parkingLot);
         Car car = new Car();
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
 
@@ -39,7 +39,7 @@ class SmartParkingBoyTest {
         //given
         ParkingLot firstParkingLot = new ParkingLot(5);
         ParkingLot secondParkingLot = new ParkingLot(5);
-        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
         Car firstCar = new Car();
         Car secondCar = new Car();
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
@@ -60,7 +60,7 @@ class SmartParkingBoyTest {
         //given
         ParkingLot firstParkingLot = new ParkingLot(5);
         ParkingLot secondParkingLot = new ParkingLot(5);
-        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
         Car car = new Car();
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
 
@@ -76,7 +76,7 @@ class SmartParkingBoyTest {
         //given
         ParkingLot firstParkingLot = new ParkingLot(5);
         ParkingLot secondParkingLot = new ParkingLot(5);
-        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
         Car firstCar = new Car();
         Car secondCar = new Car();
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
@@ -96,7 +96,7 @@ class SmartParkingBoyTest {
         //given
         ParkingLot firstParkingLot = new ParkingLot(5);
         ParkingLot secondParkingLot = new ParkingLot(5);
-        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
         Car firstCar = new Car();
         Car secondCar = new Car();
         Car thirdCar = new Car();
@@ -119,7 +119,7 @@ class SmartParkingBoyTest {
         //given
         ParkingLot firstParkingLot = new ParkingLot(1);
         ParkingLot secondParkingLot = new ParkingLot(1);
-        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
         Car firstCar = new Car();
         Car secondCar = new Car();
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
@@ -138,7 +138,7 @@ class SmartParkingBoyTest {
         //given
         ParkingLot firstParkingLot = new ParkingLot(1);
         ParkingLot secondParkingLot = new ParkingLot(1);
-        List<ParkingLot> parkingLots = asList(firstParkingLot, secondParkingLot);
+        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
         Car firstCar = new Car();
         Car secondCar = new Car();
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
