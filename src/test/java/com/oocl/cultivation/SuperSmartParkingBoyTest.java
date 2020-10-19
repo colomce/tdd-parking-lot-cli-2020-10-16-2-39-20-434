@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -176,8 +177,6 @@ class SuperSmartParkingBoyTest {
     }
 
     void parkMultipleTimes(SuperSmartParkingBoy superSmartParkingBoy, int noOfCars) {
-        for (int i = 1; i <= noOfCars; i++) {
-            superSmartParkingBoy.park(new Car());
-        }
+        IntStream.rangeClosed(1, noOfCars).mapToObj(i -> new Car()).forEach(superSmartParkingBoy::park);
     }
 }
