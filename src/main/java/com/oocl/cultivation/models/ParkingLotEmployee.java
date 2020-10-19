@@ -15,9 +15,6 @@ public abstract class ParkingLotEmployee {
         this.parkingLots = singletonList(parkingLot);
     }
 
-    ParkingLotEmployee() {
-    }
-
     public abstract ParkingTicket park(Car car);
 
     public abstract Car fetch(ParkingTicket parkingTicket);
