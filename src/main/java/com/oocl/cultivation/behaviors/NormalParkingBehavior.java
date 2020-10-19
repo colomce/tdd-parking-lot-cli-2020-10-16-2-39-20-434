@@ -20,7 +20,10 @@ public class NormalParkingBehavior implements IParkingBehavior {
 
     @Override
     public ParkingTicket park(Car car) {
-        Optional<ParkingLot> optionalParkingLot = parkingLots.stream().filter(parking -> parking.getAvailableCapacity() > 0).findFirst();
+        Optional<ParkingLot> optionalParkingLot = parkingLots.stream()
+                .filter(parking -> parking.getAvailableCapacity() > 0)
+                .findFirst();
+
         return optionalParkingLot
                 .map(parkingLot -> parkingLot.park(car))
                 .orElseThrow(() -> new NotEnoughPositionException(NOT_ENOUGH_POSITION_MSG));
