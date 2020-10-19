@@ -134,7 +134,9 @@ class SuperSmartParkingBoyTest {
         superSmartParkingBoy.park(secondCar);
 
         //when
-        NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> superSmartParkingBoy.park(new Car()));
+        NotEnoughPositionException notEnoughPositionException =
+                assertThrows(NotEnoughPositionException.class,
+                        () -> superSmartParkingBoy.park(new Car()));
 
         //then
         assertEquals("Not enough position", notEnoughPositionException.getMessage());
@@ -152,7 +154,9 @@ class SuperSmartParkingBoyTest {
         superSmartParkingBoy.park(secondCar);
 
         //when
-        InvalidParkingTicketException invalidParkingTicketException = assertThrows(InvalidParkingTicketException.class, () -> superSmartParkingBoy.fetch(null));
+        InvalidParkingTicketException invalidParkingTicketException =
+                assertThrows(InvalidParkingTicketException.class,
+                        () -> superSmartParkingBoy.fetch(null));
 
         //then
         assertEquals("Please provide your parking ticket", invalidParkingTicketException.getMessage());
@@ -177,6 +181,8 @@ class SuperSmartParkingBoyTest {
     }
 
     void parkMultipleTimes(SuperSmartParkingBoy superSmartParkingBoy, int noOfCars) {
-        IntStream.rangeClosed(1, noOfCars).mapToObj(i -> new Car()).forEach(superSmartParkingBoy::park);
+        IntStream.rangeClosed(1, noOfCars)
+                .mapToObj(integer -> new Car())
+                .forEach(superSmartParkingBoy::park);
     }
 }
