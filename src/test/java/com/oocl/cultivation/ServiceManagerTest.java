@@ -71,7 +71,10 @@ class ServiceManagerTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
 
-        ServiceManager serviceManager = new ServiceManager(Collections.emptyList(), Arrays.asList(parkingBoy, smartParkingBoy, superSmartParkingBoy));
+        ServiceManager serviceManager = new ServiceManager(Collections.emptyList());
+        serviceManager.addToManagementList(parkingBoy);
+        serviceManager.addToManagementList(smartParkingBoy);
+        serviceManager.addToManagementList(superSmartParkingBoy);
         //when
 
         //then
@@ -93,7 +96,10 @@ class ServiceManagerTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
 
-        ServiceManager serviceManager = new ServiceManager(Collections.emptyList(), Arrays.asList(parkingBoy, smartParkingBoy, superSmartParkingBoy));
+        ServiceManager serviceManager = new ServiceManager(Collections.emptyList());
+        serviceManager.addToManagementList(parkingBoy);
+        serviceManager.addToManagementList(smartParkingBoy);
+        serviceManager.addToManagementList(superSmartParkingBoy);
         //when
         ParkingTicket firstParkingTicket = serviceManager.delegateParking(firstCar, firstParkingLot);
         ParkingTicket secondParkingTicket = serviceManager.delegateParking(secondCar, secondParkingLot);
@@ -124,7 +130,10 @@ class ServiceManagerTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
 
-        ServiceManager serviceManager = new ServiceManager(Collections.emptyList(), Arrays.asList(parkingBoy, smartParkingBoy, superSmartParkingBoy));
+        ServiceManager serviceManager = new ServiceManager(Collections.emptyList());
+        serviceManager.addToManagementList(parkingBoy);
+        serviceManager.addToManagementList(smartParkingBoy);
+        serviceManager.addToManagementList(superSmartParkingBoy);
         ParkingTicket firstParkingTicket = serviceManager.delegateParking(firstCar, firstParkingLot);
         ParkingTicket secondParkingTicket = serviceManager.delegateParking(secondCar, secondParkingLot);
         ParkingTicket thirdParkingTicket = serviceManager.delegateParking(thirdCar, thirdParkingLot);
@@ -158,7 +167,11 @@ class ServiceManagerTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
 
-        ServiceManager serviceManager = new ServiceManager(Collections.emptyList(), Arrays.asList(parkingBoy, smartParkingBoy, superSmartParkingBoy));
+        ServiceManager serviceManager = new ServiceManager(Collections.emptyList());
+        serviceManager.addToManagementList(parkingBoy);
+        serviceManager.addToManagementList(smartParkingBoy);
+        serviceManager.addToManagementList(superSmartParkingBoy);
+
         serviceManager.delegateParking(firstCar, firstParkingLot);
         serviceManager.delegateParking(secondCar, secondParkingLot);
         serviceManager.delegateParking(thirdCar, thirdParkingLot);
@@ -184,7 +197,11 @@ class ServiceManagerTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(secondParkingLot);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(thirdParkingLot);
 
-        ServiceManager serviceManager = new ServiceManager(Collections.emptyList(), Arrays.asList(parkingBoy, smartParkingBoy, superSmartParkingBoy));
+        ServiceManager serviceManager = new ServiceManager(Collections.emptyList());
+        serviceManager.addToManagementList(parkingBoy);
+        serviceManager.addToManagementList(smartParkingBoy);
+        serviceManager.addToManagementList(superSmartParkingBoy);
+
         serviceManager.delegateParking(firstCar, firstParkingLot);
         serviceManager.delegateParking(secondCar, secondParkingLot);
         serviceManager.delegateParking(thirdCar, thirdParkingLot);

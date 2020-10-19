@@ -19,18 +19,12 @@ public class ServiceManager extends ParkingLotEmployee {
         managementList = new ArrayList<>();
         fetchingBehavior = new FetchingBehavior(this.parkingLots);
         normalParkingBehavior = new NormalParkingBehavior(this.parkingLots);
+        highManagementFetchingBehavior = new HighManagementFetchingBehavior(this.managementList);
     }
 
     public ServiceManager(List<ParkingLot> parkingLots) {
         super(parkingLots);
         managementList = new ArrayList<>();
-        fetchingBehavior = new FetchingBehavior(this.parkingLots);
-        normalParkingBehavior = new NormalParkingBehavior(this.parkingLots);
-    }
-
-    public ServiceManager(List<ParkingLot> parkingLots, List<ParkingLotEmployee> managementList) {
-        super(parkingLots);
-        this.managementList = managementList;
         fetchingBehavior = new FetchingBehavior(this.parkingLots);
         normalParkingBehavior = new NormalParkingBehavior(this.parkingLots);
         highManagementFetchingBehavior = new HighManagementFetchingBehavior(this.managementList);
@@ -57,5 +51,9 @@ public class ServiceManager extends ParkingLotEmployee {
 
     public Car delegateFetch(ParkingTicket parkingTicket) {
         return highManagementFetchingBehavior.fetch(parkingTicket);
+    }
+
+    public void addToManagementList(ParkingLotEmployee parkingLotEmployee) {
+        this.managementList.add(parkingLotEmployee);
     }
 }
