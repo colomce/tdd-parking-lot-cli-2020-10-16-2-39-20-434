@@ -95,7 +95,7 @@ class ParkingBoyTest {
         //given
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
         Car car = new Car();
-        ParkingTicket correctParkingTicket = parkingBoy.park(car);
+        parkingBoy.park(car);
         ParkingTicket wrongTicket = new ParkingTicket();
 
         //when
