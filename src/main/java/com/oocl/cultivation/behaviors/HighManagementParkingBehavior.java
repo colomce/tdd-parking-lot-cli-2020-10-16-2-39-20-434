@@ -21,7 +21,7 @@ public class HighManagementParkingBehavior implements IParkingBehavior {
     @Override
     public ParkingTicket park(Car car) {
         Optional<ParkingLotEmployee> parkingLotEmployee = managementList.stream()
-                .filter(parkingBoy -> parkingBoy.getParkingLots().contains(parkingLot))
+                .filter(parkingBoy -> parkingBoy.manages(parkingLot))
                 .findFirst();
         return parkingLotEmployee.map(lotEmployee -> lotEmployee.park(car)).orElse(null);
     }

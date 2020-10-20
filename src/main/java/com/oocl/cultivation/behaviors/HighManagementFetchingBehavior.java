@@ -25,8 +25,7 @@ public class HighManagementFetchingBehavior implements IFetchingBehavior {
             throw new InvalidParkingTicketException(PROVIDE_YOUR_TICKET_MSG);
         }
         Optional<ParkingLotEmployee> parkingLotEmployee = managementList.stream()
-                .filter(parkingBoy -> parkingBoy.getParkingLots().stream()
-                        .anyMatch(parkingLot -> parkingLot.isTicketValid(parkingTicket)))
+                .filter(parkingBoy -> parkingBoy.isTicketValid(parkingTicket))
                 .findFirst();
 
         return parkingLotEmployee

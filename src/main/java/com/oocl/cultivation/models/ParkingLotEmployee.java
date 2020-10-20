@@ -18,7 +18,19 @@ public abstract class ParkingLotEmployee implements ICanPark, ICanFetch {
         this.parkingLots = singletonList(parkingLot);
     }
 
-    public List<ParkingLot> getParkingLots() {
-        return parkingLots;
+    public boolean manages(ParkingLot parkingLot) {
+        return parkingLots.contains(parkingLot);
+    }
+
+    public boolean isTicketValid(ParkingTicket parkingTicket) {
+        return parkingLots.stream().anyMatch(parkingLot -> parkingLot.isTicketValid(parkingTicket));
+    }
+
+    public ParkingLot getParkingLot(int index) {
+        return parkingLots.get(index);
+    }
+
+    public int getNumberOfParkingLot() {
+        return parkingLots.size();
     }
 }

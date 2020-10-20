@@ -24,7 +24,7 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
 
         //when
-        ParkingLot parkingLot = parkingBoy.getParkingLots().get(0);
+        ParkingLot parkingLot = parkingBoy.getParkingLot(0);
 
         //then
         assertNotNull(parkingLot);
@@ -214,7 +214,7 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
 
         //when
-        int numberOfParkingLots = parkingBoy.getParkingLots().size();
+        int numberOfParkingLots = parkingBoy.getNumberOfParkingLot();
 
         //then
         assertEquals(2, numberOfParkingLots);
