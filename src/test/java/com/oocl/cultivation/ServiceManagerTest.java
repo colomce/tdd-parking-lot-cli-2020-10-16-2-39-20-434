@@ -11,9 +11,7 @@ import com.oocl.cultivation.models.SmartParkingBoy;
 import com.oocl.cultivation.models.SuperSmartParkingBoy;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -24,7 +22,10 @@ class ServiceManagerTest {
     @Test
     void should_return_cars_when_manager_parking_boy_fetch_given_two_tickets_from_two_parked_cars() {
         //given
-        ServiceManager serviceManager = new ServiceManager(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ServiceManager serviceManager = new ServiceManager();
+        serviceManager.addToManagementList(parkingBoy);
+        serviceManager.addToManagementList(parkingBoy);
         Car firstCar = new Car();
         Car secondCar = new Car();
         ParkingTicket firstParkingTicket = serviceManager.park(firstCar);
@@ -42,12 +43,14 @@ class ServiceManagerTest {
     @Test
     void should_fetch_two_right_cars_when_manager_parking_boy_fetch_given_two_parked_cars_two_parking_lot_and_parking_tickets() {
         //given
-        ParkingLot firstParkingLot = new ParkingLot(1);
-        ParkingLot secondParkingLot = new ParkingLot(1);
         Car firstCar = new Car();
         Car secondCar = new Car();
-        List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
-        ServiceManager serviceManager = new ServiceManager(parkingLots);
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(new ParkingLot(1));
+        ServiceManager serviceManager = new ServiceManager();
+        serviceManager.addToManagementList(parkingBoy);
+        serviceManager.addToManagementList(smartParkingBoy);
+
         ParkingTicket firstCarParkingTicket = serviceManager.park(firstCar);
         ParkingTicket secondCarParkingTicket = serviceManager.park(secondCar);
 
@@ -101,13 +104,13 @@ class ServiceManagerTest {
         serviceManager.addToManagementList(smartParkingBoy);
         serviceManager.addToManagementList(superSmartParkingBoy);
         //when
-        ParkingTicket firstParkingTicket = serviceManager.delegateParking(firstCar, firstParkingLot);
-        ParkingTicket secondParkingTicket = serviceManager.delegateParking(secondCar, secondParkingLot);
-        ParkingTicket thirdParkingTicket = serviceManager.delegateParking(thirdCar, thirdParkingLot);
+        ParkingTicket firstParkingTicket = serviceManager.park(firstCar);
+        ParkingTicket secondParkingTicket = serviceManager.park(secondCar);
+        ParkingTicket thirdParkingTicket = serviceManager.park(thirdCar);
 
-        Car fetchedFirstCar = serviceManager.delegateFetch(firstParkingTicket);
-        Car fetchedSecondCar = serviceManager.delegateFetch(secondParkingTicket);
-        Car fetchedThirdCar = serviceManager.delegateFetch(thirdParkingTicket);
+        Car fetchedFirstCar = serviceManager.fetch(firstParkingTicket);
+        Car fetchedSecondCar = serviceManager.fetch(secondParkingTicket);
+        Car fetchedThirdCar = serviceManager.fetch(thirdParkingTicket);
 
         //then
         assertSame(firstCar, fetchedFirstCar);
@@ -134,19 +137,19 @@ class ServiceManagerTest {
         serviceManager.addToManagementList(parkingBoy);
         serviceManager.addToManagementList(smartParkingBoy);
         serviceManager.addToManagementList(superSmartParkingBoy);
-        ParkingTicket firstParkingTicket = serviceManager.delegateParking(firstCar, firstParkingLot);
-        ParkingTicket secondParkingTicket = serviceManager.delegateParking(secondCar, secondParkingLot);
-        ParkingTicket thirdParkingTicket = serviceManager.delegateParking(thirdCar, thirdParkingLot);
+        ParkingTicket firstParkingTicket = serviceManager.park(firstCar);
+        ParkingTicket secondParkingTicket = serviceManager.park(secondCar);
+        ParkingTicket thirdParkingTicket = serviceManager.park(thirdCar);
 
         //when
-        NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> serviceManager.delegateParking(fourthCar, firstParkingLot));
+        NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> serviceManager.park(fourthCar));
 
         //then
         assertEquals("Not enough position", notEnoughPositionException.getMessage());
 
-        Car fetchedFirstCar = serviceManager.delegateFetch(firstParkingTicket);
-        Car fetchedSecondCar = serviceManager.delegateFetch(secondParkingTicket);
-        Car fetchedThirdCar = serviceManager.delegateFetch(thirdParkingTicket);
+        Car fetchedFirstCar = serviceManager.fetch(firstParkingTicket);
+        Car fetchedSecondCar = serviceManager.fetch(secondParkingTicket);
+        Car fetchedThirdCar = serviceManager.fetch(thirdParkingTicket);
 
         assertSame(firstCar, fetchedFirstCar);
         assertSame(secondCar, fetchedSecondCar);
@@ -172,12 +175,12 @@ class ServiceManagerTest {
         serviceManager.addToManagementList(smartParkingBoy);
         serviceManager.addToManagementList(superSmartParkingBoy);
 
-        serviceManager.delegateParking(firstCar, firstParkingLot);
-        serviceManager.delegateParking(secondCar, secondParkingLot);
-        serviceManager.delegateParking(thirdCar, thirdParkingLot);
+        serviceManager.park(firstCar);
+        serviceManager.park(secondCar);
+        serviceManager.park(thirdCar);
 
         //when
-        InvalidParkingTicketException invalidParkingTicketException = assertThrows(InvalidParkingTicketException.class, () -> serviceManager.delegateFetch(null));
+        InvalidParkingTicketException invalidParkingTicketException = assertThrows(InvalidParkingTicketException.class, () -> serviceManager.fetch(null));
 
         //then
         assertEquals("Please provide your parking ticket", invalidParkingTicketException.getMessage());
@@ -202,14 +205,14 @@ class ServiceManagerTest {
         serviceManager.addToManagementList(smartParkingBoy);
         serviceManager.addToManagementList(superSmartParkingBoy);
 
-        serviceManager.delegateParking(firstCar, firstParkingLot);
-        serviceManager.delegateParking(secondCar, secondParkingLot);
-        serviceManager.delegateParking(thirdCar, thirdParkingLot);
+        serviceManager.park(firstCar);
+        serviceManager.park(secondCar);
+        serviceManager.park(thirdCar);
 
         //when
         InvalidParkingTicketException invalidParkingTicketException =
                 assertThrows(InvalidParkingTicketException.class,
-                        () -> serviceManager.delegateFetch(new ParkingTicket()));
+                        () -> serviceManager.fetch(new ParkingTicket()));
 
         //then
         assertEquals("Unrecognized parking ticket", invalidParkingTicketException.getMessage());

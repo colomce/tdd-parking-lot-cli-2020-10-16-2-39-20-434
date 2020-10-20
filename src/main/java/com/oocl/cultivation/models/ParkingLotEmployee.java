@@ -10,6 +10,8 @@ import static java.util.Collections.singletonList;
 public abstract class ParkingLotEmployee implements ICanPark, ICanFetch {
     protected List<ParkingLot> parkingLots;
 
+    ParkingLotEmployee() { }
+
     ParkingLotEmployee(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
@@ -24,6 +26,12 @@ public abstract class ParkingLotEmployee implements ICanPark, ICanFetch {
 
     public boolean isTicketValid(ParkingTicket parkingTicket) {
         return parkingLots.stream().anyMatch(parkingLot -> parkingLot.isTicketValid(parkingTicket));
+    }
+
+    public boolean isFull() {
+        return parkingLots.stream()
+                .filter(ParkingLot::hasAvailablePosition)
+                .count() < 1;
     }
 
     public ParkingLot getParkingLot(int index) {
