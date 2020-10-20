@@ -21,10 +21,12 @@ public class ParkingBoy extends ParkingLotEmployee {
         normalParkingBehavior = new NormalParkingBehavior(this.parkingLots);
     }
 
+    @Override
     public ParkingTicket park(Car car) {
         return normalParkingBehavior.park(car);
     }
 
+    @Override
     public Car fetch(ParkingTicket parkingTicket) {
         return this.fetchingBehavior.fetch(parkingTicket);
     }

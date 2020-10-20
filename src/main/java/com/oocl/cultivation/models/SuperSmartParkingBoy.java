@@ -21,10 +21,12 @@ public class SuperSmartParkingBoy extends ParkingLotEmployee {
         this.fetchingBehavior = new FetchingBehavior(parkingLots);
     }
 
+    @Override
     public ParkingTicket park(Car car) {
         return this.superSmartParkingBehavior.park(car);
     }
 
+    @Override
     public Car fetch(ParkingTicket parkingTicket) {
         return fetchingBehavior.fetch(parkingTicket);
     }
