@@ -23,6 +23,6 @@ public class HighManagementParkingBehavior implements IParkingBehavior {
         Optional<ParkingLotEmployee> parkingLotEmployee = managementList.stream()
                 .filter(parkingBoy -> parkingBoy.manages(parkingLot))
                 .findFirst();
-        return parkingLotEmployee.map(lotEmployee -> lotEmployee.park(car)).orElse(null);
+        return parkingLotEmployee.map(parkingBoy -> parkingBoy.park(car)).orElse(null);
     }
 }
